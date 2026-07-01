@@ -8,7 +8,7 @@ import type { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
 
-import BgClientes from '@/assets/images/background-clientes.png';
+import BgClientes from '@/assets/images/Clientes.webp';
 import LineHr2 from '@/assets/images/line-hr-2.png';
 import Empresa1 from '@/assets/images/empresa-1-Photoroom.png';
 import Empresa2 from '@/assets/images/empresa-2-Photoroom.png';

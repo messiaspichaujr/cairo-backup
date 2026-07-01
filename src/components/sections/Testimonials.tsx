@@ -1,69 +1,89 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
 
-import LineHrCliente from '@/assets/images/line-hr-cliente.png';
-import FaviconDepoimento from '@/assets/images/favicon-depoimento.png';
+// Usando o caminho da imagem que você forneceu
+import FundoDepoimentos from '@/assets-novo/WEBP/fundo-depoimentos.png';
 
 export function Testimonials() {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   const depoimentos = [
     {
-      nome: 'Marcelo Antunes',
-      cargo: 'Gerente de Operações',
-      titulo: '"Revolução na Produtividade!"',
-      texto: 'Antes de contratarmos a Cairo TI, nossos processos internos eram lentos e cheios de gargalos, especialmente na gestão de dados e comunicação entre equipes. A solução de infraestrutura e a implementação de um novo sistema customizado pela Cairo Tecnologia e Inovação foram transformadoras.'
+      nome: 'Fernando Andrade',
+      cargo: 'Diretor de TI',
+      empresa: 'VERDEMAIS',
+      texto: 'A Cairo TI elevou nossa infraestrutura a outro nível. Hoje temos mais segurança, performance e economia.',
+      estrelas: 5,
     },
     {
-      nome: 'Juliana Costa',
+      nome: 'Juliana Martins',
       cargo: 'CEO',
-      titulo: '"Foco Total no Core Business"',
-      texto: 'A terceirização completa da nossa TI para a Cairo nos permitiu tirar o foco da manutenção de sistemas e colocá-lo totalmente no desenvolvimento de novos produtos. Eles trouxeram uma consultoria estratégica que identificou e eliminou pontos de lentidão críticos.'
+      empresa: 'ARTCON',
+      texto: 'Profissionais extremamente competentes e comprometidos. A Cairo se tornou parceira estratégica do nosso negócio.',
+      estrelas: 5,
     },
     {
-      nome: 'Roberto Alves',
-      cargo: 'Diretor Financeiro',
-      titulo: '"Segurança e Eficiência"',
-      texto: 'Estávamos sofrendo com interrupções constantes e preocupações com a segurança dos nossos dados. A equipe da Cairo Tecnologia e Inovação implementou uma política de segurança robusta e migrou toda a nossa operação para a nuvem de forma impecável.'
+      nome: 'Ricardo Souza',
+      cargo: 'Gerente Financeiro',
+      empresa: 'BELLOTA',
+      texto: 'O suporte da Cairo é diferenciado. Sempre rápidos, eficientes e focados em soluções que geram resultados reais.',
+      estrelas: 5,
     }
   ];
 
+  // Componente de Estrelas
+  const renderStars = (count: number) => {
+    return Array.from({ length: count }).map((_, i) => (
+      <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-yellow-400">
+        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+      </svg>
+    ));
+  };
+
   return (
-    <section id="depoimentos" className="w-full py-24 bg-[#f4f4f5]">
-      <div className="max-w-[1200px] mx-auto px-4 relative">
+    <section 
+      id="depoimentos" 
+      className="w-full pt-24 pb-32 bg-[#020b1f] bg-cover bg-center bg-no-repeat relative overflow-hidden"
+      style={{ backgroundImage: `url(${FundoDepoimentos.src})` }}
+    >
+      <div className="max-w-[1200px] mx-auto px-4 relative z-10">
         
+        {/* Cabeçalho */}
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-[#6c6d70] text-6xl font-extrabold mb-4 tracking-tight">
-            Depoimentos
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-10 h-[1px] bg-[#E6007E]"></div>
+            <span className="text-[#E6007E] text-sm font-bold tracking-widest uppercase">
+              Depoimentos
+            </span>
+            <div className="w-10 h-[1px] bg-[#E6007E]"></div>
+          </div>
+          <h2 className="text-white text-5xl font-extrabold mb-4 tracking-tight">
+            Quem confia, recomenda.
           </h2>
-          <Image 
-            src={LineHrCliente} 
-            alt="Divisor" 
-            width={240} 
-            height={20} 
-            className="object-contain"
-          />
+          <p className="text-gray-300 text-lg font-medium">
+            Veja o que nossos clientes dizem sobre a experiência<br className="hidden md:block" /> de trabalhar com a Cairo.
+          </p>
         </div>
 
-        <div className="flex items-center justify-center gap-2 md:gap-4 relative px-2 md:px-8">
+        {/* Carrossel */}
+        <div className="flex items-center justify-center gap-4 md:gap-6 relative px-2 md:px-12">
           
           <button 
             onClick={() => swiperInstance?.slidePrev()}
-            className="flex w-12 h-12 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-md hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer absolute left-0"
+            className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute left-0"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
 
-          <div className="w-full max-w-[1020px] py-4">
+          <div className="w-full max-w-[1050px] py-4">
             <Swiper
               modules={[Navigation, Autoplay]}
               spaceBetween={30}
@@ -71,34 +91,45 @@ export function Testimonials() {
               loop={true}
               speed={800} 
               onSwiper={(swiper) => setSwiperInstance(swiper)}
-              autoplay={{ delay: 3000, disableOnInteraction: false }} 
+              autoplay={{ delay: 4000, disableOnInteraction: false }} 
               breakpoints={{
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
               }}
-              className="px-2 pb-8"
+              className="px-2"
             >
               {depoimentos.map((dep, index) => (
                 <SwiperSlide key={index} className="h-auto">
-                  <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.06)] p-8 flex flex-col h-full mx-2">
+                  <div className="bg-[#0a1635]/80 backdrop-blur-md rounded-2xl border border-white/5 p-8 flex flex-col h-full mx-2 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
                     
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-14 h-14 flex-shrink-0">
-                        <Image src={FaviconDepoimento} alt="Ícone" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex flex-col text-left">
-                        <span className="text-[#E6007E] font-extrabold text-lg leading-tight">{dep.nome}</span>
-                        <span className="text-[#008FD5] font-bold text-sm mt-0.5">{dep.cargo}</span>
-                      </div>
+                    {/* Estrelas */}
+                    <div className="flex gap-1 mb-6">
+                      {renderStars(dep.estrelas)}
                     </div>
 
-                    <div className="flex flex-col text-center items-center">
-                      <h4 className="text-[#E6007E] font-bold text-base mb-5">
-                        {dep.titulo}
-                      </h4>
-                      <p className="text-gray-500 text-[14px] leading-relaxed">
+                    {/* Texto com aspas */}
+                    <div className="flex gap-3 mb-8 flex-1">
+                      <span className="text-[#E6007E] text-2xl font-serif font-black leading-none mt-1">“</span>
+                      <p className="text-gray-200 text-sm leading-relaxed font-medium">
                         {dep.texto}
                       </p>
+                    </div>
+
+                    {/* Rodapé do Card (Perfil) */}
+                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                      {/* Avatar Placeholder */}
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                        {dep.nome.charAt(0)}
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className="text-white font-bold text-sm tracking-tight">{dep.nome}</span>
+                        <span className="text-gray-400 text-xs mb-1">{dep.cargo}</span>
+                        {/* Logo da Empresa Placeholder */}
+                        <span className="text-white/60 font-black text-[10px] tracking-widest uppercase flex items-center gap-1">
+                          <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                          {dep.empresa}
+                        </span>
+                      </div>
                     </div>
 
                   </div>
@@ -109,14 +140,25 @@ export function Testimonials() {
 
           <button 
             onClick={() => swiperInstance?.slideNext()}
-            className="flex w-12 h-12 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-md hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer absolute right-0"
+            className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute right-0"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
 
         </div>
+
+        {/* Botão Ver Mais */}
+        <div className="flex justify-center mt-12 relative z-20">
+          <button className="bg-transparent border border-[#E6007E] text-white text-sm font-bold py-3 px-8 rounded-full hover:bg-[#E6007E] transition-colors flex items-center gap-3">
+            Ver mais depoimentos
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 text-[#E6007E] hover:text-white">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+        </div>
+
       </div>
     </section>
   );

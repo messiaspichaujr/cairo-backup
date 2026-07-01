@@ -99,7 +99,7 @@ export function Footer() {
           </div>
 
           <div className="text-center text-gray-300 text-[13px] leading-relaxed pt-6 border-t border-gray-600/50">
-            © 2025 Cairo Tecnologia e Inovação. Todos os direitos reservados. Nenhuma parte deste site pode ser reproduzida ou transmitida de qualquer forma, <br className="hidden lg:block" />
+            © 2026 Cairo Tecnologia e Inovação. Todos os direitos reservados. Nenhuma parte deste site pode ser reproduzida ou transmitida de qualquer forma, <br className="hidden lg:block" />
             incluindo impressão, fotografia, gravação ou outros meios eletrônicos, sem a permissão prévia por escrito da Cairo Tecnologia e Inovação. <br className="hidden lg:block" />
             Para mais informações, entre em contato.
           </div>

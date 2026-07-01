@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 // Assets
-import BgContato from '@/assets/images/background-contato.png';
+import BgContato from '@/assets/images/Contato.webp';
 import LineHrContato from '@/assets/images/line-hr-contato.png';
 
 export function Contact() {
@@ -54,7 +54,7 @@ export function Contact() {
                   <label className="text-white text-sm font-bold mb-1 ml-1">Nome *</label>
                   <input 
                     type="text" 
-                    className="w-full h-11 bg-white border-2 border-[#E6007E] rounded-md px-4 text-gray-800 outline-none" 
+                    className="w-full h-11 bg-white border-0 shadow-sm rounded-md px-4 text-gray-800 outline-none" 
                     required 
                   />
                 </div>
@@ -63,7 +63,7 @@ export function Contact() {
                   <label className="text-white text-sm font-bold mb-1 ml-1">Sobrenome *</label>
                   <input 
                     type="text" 
-                    className="w-full h-11 bg-white border-2 border-[#E6007E] rounded-md px-4 text-gray-800 outline-none" 
+                    className="w-full h-11 bg-white border-0 shadow-sm rounded-md px-4 text-gray-800 outline-none" 
                     required 
                   />
                 </div>
@@ -72,7 +72,7 @@ export function Contact() {
                   <label className="text-white text-sm font-bold mb-1 ml-1">Telefone *</label>
                   <input 
                     type="tel" 
-                    className="w-full h-11 bg-white border-2 border-[#E6007E] rounded-md px-4 text-gray-800 outline-none" 
+                    className="w-full h-11 bg-white border-0 shadow-sm rounded-md px-4 text-gray-800 outline-none" 
                     required 
                   />
                 </div>
@@ -81,7 +81,7 @@ export function Contact() {
                   <label className="text-white text-sm font-bold mb-1 ml-1">E-mail *</label>
                   <input 
                     type="email" 
-                    className="w-full h-11 bg-white border-2 border-[#E6007E] rounded-md px-4 text-gray-800 outline-none" 
+                    className="w-full h-11 bg-white border-0 shadow-sm rounded-md px-4 text-gray-800 outline-none" 
                     required 
                   />
                 </div>
@@ -90,7 +90,7 @@ export function Contact() {
                   <label className="text-white text-sm font-bold mb-1 ml-1">Sobre qual serviço gostaria de falar? *</label>
                   <input 
                     type="text" 
-                    className="w-full h-11 bg-white border-2 border-[#E6007E] rounded-md px-4 text-gray-800 outline-none" 
+                    className="w-full h-11 bg-white border-0 shadow-sm rounded-md px-4 text-gray-800 outline-none" 
                     required 
                   />
                 </div>

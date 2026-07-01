@@ -26,7 +26,8 @@ export function SpecialProjects() {
   return (
     <section 
       id="projetos" 
-      className="relative w-full py-20 lg:py-28 bg-contain bg-center bg-no-repeat overflow-hidden"
+      // AQUI ESTÁ A CORREÇÃO: bg-cover em vez de bg-contain, garantindo o preenchimento total
+      className="relative w-full py-20 lg:py-28 bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: `url(${BgProjetos.src})` }}
     >
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">

@@ -1,4 +1,5 @@
-// src/components/sections/AreasDeAtuacao.tsx
+"use client";
+
 import Image from 'next/image';
 
 // Importando os assets
@@ -7,19 +8,16 @@ import LineHrCliente from '@/assets/images/line-hr-cliente.png';
 
 export function AreasDeAtuacao() {
   return (
-    <section id="atuacao" className="relative w-full bg-white py-16 lg:py-20 z-30 overflow-visible">
+    <section id="atuacao" className="relative w-full bg-white py-16 lg:py-24 z-30 overflow-visible">
       
       {/* Pílulas Sobrepostas (Vazam para a seção de cima "Soluções") */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"> {/* <-- A MUDANÇA ESTÁ AQUI: z-50 */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
          <div className="absolute -top-24 -left-16 md:-left-8 flex flex-col gap-6 md:gap-8 opacity-100 transform -rotate-45">
             <div className="w-64 md:w-80 h-16 md:h-20 bg-gray-400 rounded-full shadow-lg"></div>
             <div className="w-64 md:w-80 h-16 md:h-20 bg-[#E6007E] rounded-full shadow-lg ml-12 md:ml-16"></div>
             <div className="w-48 md:w-56 h-16 md:h-20 bg-[#008FD5] rounded-full shadow-lg -ml-6 md:-ml-8"></div>
          </div>
       </div>
-
-      {/* Faixa Cinza Decorativa de Fundo (Visível apenas no Desktop) */}
-      <div className="absolute top-1/4 left-0 w-full h-1/2 bg-gray-50 z-0 hidden lg:block"></div>
 
       {/* Container Principal */}
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">

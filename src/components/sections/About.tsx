@@ -1,82 +1,175 @@
-// src/components/sections/About.tsx
+"use client";
+
 import Image from 'next/image';
 
-// Importando os assets
-import PerfilDono from '@/assets/images/Perfil-Icaro.png';
-import Icon1 from '@/assets/images/icon-1.png';
-import Icon2 from '@/assets/images/icon-2.png';
-import Icon3 from '@/assets/images/icon-3.png';
+// Assets - Utilizando o caminho exato da imagem recortada
+import PerfilDono from '@/assets/images/sobre-cairo-perfil.png';
 
 export function About() {
-  return (
-    <section id="sobre" className="w-full bg-[#f9fafb] py-16 relative overflow-visible z-20">
-      
-      {/* Pílulas na DIREITA (Vazando para a Hero) */}
-      <div className="absolute top-0 right-0 w-full h-full pointer-events-none z-0">
-         <div className="absolute -top-20 -right-32 md:-right-12 flex flex-col items-end gap-6 md:gap-8 opacity-100 transform rotate-45">
-            <div className="w-64 md:w-80 h-16 md:h-20 bg-gray-400 rounded-full shadow-lg"></div>
-            <div className="w-64 md:w-80 h-16 md:h-20 bg-[#008FD5] rounded-full shadow-lg mr-12 md:mr-16"></div>
-            <div className="w-48 md:w-56 h-16 md:h-20 bg-[#E6007E] rounded-full shadow-lg -mr-6 md:-mr-8"></div>
-         </div>
-      </div>
+  const stats = [
+    {
+      id: 1,
+      value: '+17',
+      label: 'anos de mercado',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-[#008FD5]">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+        </svg>
+      )
+    },
+    {
+      id: 2,
+      value: '+500',
+      label: 'clientes atendidos',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-[#008FD5]">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+        </svg>
+      )
+    },
+    {
+      id: 3,
+      value: '+1.200',
+      label: 'projetos entregues',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-[#008FD5]">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699-2.74a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+        </svg>
+      )
+    },
+    {
+      id: 4,
+      value: '98%',
+      label: 'de satisfação',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-[#008FD5]">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499c.173-.439.817-.439.99 0l3.013 7.021 7.422 1.018c.479.066.67.653.322.981l-5.38 5.045 1.27 7.234c.083.473-.415.83-.822.605L12 21.132l-6.41 3.376c-.41.214-.902-.134-.82-.605l1.27-7.234-5.38-5.045c-.347-.328-.156-.915.322-.981l7.422-1.018 3.013-7.02z" />
+        </svg>
+      )
+    }
+  ];
 
-      <div className="max-w-[1200px] mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-12">
+  const pillars = [
+    { title: 'Desenvolvimento', desc: 'Soluções sob medida para o seu negócio.', icon: '⚡' },
+    { title: 'Infraestrutura', desc: 'Ambientes seguros, modernos e escaláveis.', icon: '☁️' },
+    { title: 'Segurança', desc: 'Proteção de dados e conformidade.', icon: '🛡️' },
+    { title: 'Performance', desc: 'Tecnologia que impulsiona resultados reais.', icon: '📊' }
+  ];
+
+  return (
+    <section id="sobre" className="w-full bg-[#f8fafc] pt-24 pb-16 relative overflow-hidden">
+      
+      {/* Detalhes de pontos de fundo (Grid Pontilhado do Protótipo) */}
+      <div className="absolute top-12 left-8 w-32 h-32 opacity-20 bg-[radial-gradient(#008fd5_1.5px,transparent_1.5px)] [background-size:12px_12px] hidden lg:block"></div>
+      <div className="absolute bottom-48 right-8 w-32 h-32 opacity-20 bg-[radial-gradient(#008fd5_1.5px,transparent_1.5px)] [background-size:12px_12px] hidden lg:block"></div>
+
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        
+        {/* Bloco Principal: Imagem + Texto */}
+        <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24 mb-20">
           
-          {/* Coluna da Esquerda: Imagem do CEO */}
-          <div className="w-full lg:w-5/12 flex flex-col items-center">
-            <div className="relative w-full rounded-tr-[4rem] overflow-hidden bg-white p-2 shadow-sm">
-               <Image 
-                  src={PerfilDono} 
-                  alt="Rodrigo Schmidt - CEO" 
-                  className="w-full h-auto object-cover rounded-tr-[3.5rem] rounded-bl-lg rounded-br-lg"
-               />
+          {/* Coluna da Esquerda: Foto Estruturada */}
+          <div className="w-full lg:w-5/12 flex justify-center relative">
+            
+            {/* Esfera decorativa rosa na lateral */}
+            <div className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#E6007E] rounded-full shadow-md z-20"></div>
+            
+            {/* Container Principal da Foto com fundo azul e curvas assimétricas */}
+            <div className="relative w-full max-w-[440px] aspect-[1/1] bg-gradient-to-br from-[#008FD5] to-[#044e75] rounded-[3rem] rounded-tr-[7rem] shadow-xl p-3 flex items-end overflow-visible">
+              
+              <Image 
+                src={PerfilDono} 
+                alt="Rodrigo Schmidt - CEO da Cairo" 
+                className="w-full h-auto object-contain absolute bottom-0 left-0 rounded-b-[2.7rem] rounded-tr-[6.7rem]"
+                priority
+              />
+
+              {/* Card de Identificação Flutuante */}
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl py-3 px-6 border border-gray-100 flex items-center gap-3 z-30">
+                <div className="w-10 h-10 bg-pink-50 rounded-full flex items-center justify-center text-[#E6007E] font-bold text-sm">
+                  👤
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-gray-900 font-extrabold text-sm tracking-tight">Rodrigo Schmidt</span>
+                  <span className="text-gray-400 font-medium text-xs">CEO da Cairo</span>
+                </div>
+              </div>
+
             </div>
-            <span className="text-gray-600 italic text-sm mt-4 text-center">
-              (Rodrigo Schmidt - CEO)
-            </span>
           </div>
 
-          {/* Coluna da Direita: Textos e Ícones */}
-          <div className="w-full lg:w-7/12 flex flex-col justify-center">
+          {/* Coluna da Direita: Textos e Grid de Números */}
+          <div className="w-full lg:w-7/12 flex flex-col items-center lg:items-start text-center lg:text-left">
             
-            <h2 className="text-[#E6007E] text-4xl lg:text-5xl font-extrabold leading-tight mb-8">
-              Sobre a Cairo <br /> Tecnologia e Inovação
+            {/* Label Superior */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-[#E6007E] text-xs font-black uppercase tracking-widest">Sobre a Cairo</span>
+              <div className="w-10 h-[2px] bg-[#E6007E]"></div>
+            </div>
+
+            {/* Título de Forte Impacto */}
+            <h2 className="text-[#070b12] text-4xl md:text-5xl font-black tracking-tight leading-[1.15] mb-6 max-w-xl">
+              Tecnologia que gera <br />
+              <span className="text-[#E6007E]">vantagem competitiva.</span>
             </h2>
 
-            <div className="flex flex-col gap-6">
-              
-              <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <Image src={Icon1} alt="Ícone Localização" width={32} height={32} className="object-contain" />
-                </div>
-                <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
-                  Cairo, Capital do Egito, maior cidade do Mundo Árabe e da África. Sua pronúncia ao pé da letra em sua língua nativa significa "forte, vitoriosa". Suas sílabas também remetem às iniciais dos sócios, Caiçara e Rodrigo.
-                </p>
-              </div>
+            {/* Parágrafo Limpo */}
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mb-10 font-medium">
+              Há mais de 17 anos, ajudamos empresas de diferentes segmentos a crescerem através de soluções tecnológicas inteligentes, seguras e escaláveis.
+            </p>
 
-              <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <Image src={Icon2} alt="Ícone Alvo/Foco" width={32} height={32} className="object-contain" />
+            {/* GRID DE ESTATÍSTICAS (Os 4 cards brancos) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full mb-10">
+              {stats.map((stat) => (
+                <div 
+                  key={stat.id} 
+                  className="bg-white rounded-2xl border border-gray-100 p-5 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center lg:items-start text-center lg:text-left transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center mb-4 border border-slate-100">
+                    {stat.icon}
+                  </div>
+                  <span className="text-[#E6007E] text-3xl font-black tracking-tight mb-1">
+                    {stat.value}
+                  </span>
+                  <span className="text-gray-400 font-bold text-xs leading-tight">
+                    {stat.label}
+                  </span>
                 </div>
-                <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
-                  A Cairo Tecnologia e Inovação é uma empresa de Infraestrutura e Tecnologia da Informação, especializada no atendimento a empresas de pequeno e médio porte, com objetivo de dar força (robustez) à infraestrutura das empresas para que essas sigam um caminho vitorioso, gerando benefícios à economia e qualidade de vida das famílias envolvidas direta e indiretamente em seus serviços.
-                </p>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <Image src={Icon3} alt="Ícone Qualidade/Prêmio" width={32} height={32} className="object-contain" />
-                </div>
-                <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
-                  A Cairo foi fundada por profissionais que atuam desde o ano 2000 na área de tecnologia, sempre focados ao atendimento empresarial. Nestes 17 anos de atendimento, contribuindo para empresas de diversos segmentos na região, acumularam experiência e conhecimento, que proporcionaram identificar as demandas de mercado e oferecer serviços para preencher essas lacunas.
-                </p>
-              </div>
-
+              ))}
             </div>
 
+            {/* Botão de Ação Redondo */}
+            <button className="bg-[#E6007E] hover:bg-[#c5006c] text-white font-extrabold px-8 py-3.5 rounded-full text-sm shadow-md shadow-pink-600/10 transition-all flex items-center gap-2 group cursor-pointer">
+              Conheça nossa história
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+
           </div>
+
         </div>
+
+        {/* --- BARRA INFERIOR DE SERVIÇOS (Painel horizontal flutuante) --- */}
+        <div className="w-full bg-white rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 lg:divide-x divide-gray-100">
+          {pillars.map((pillar, idx) => (
+            <div 
+              key={idx} 
+              className={`flex items-start gap-4 pt-6 md:pt-0 ${idx > 0 ? 'lg:pl-6' : ''}`}
+            >
+              <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+                {pillar.icon}
+              </div>
+              <div className="flex flex-col text-left">
+                <h4 className="text-gray-900 font-extrabold text-[15px] mb-1">
+                  {pillar.title}
+                </h4>
+                <p className="text-gray-400 font-medium text-xs leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
