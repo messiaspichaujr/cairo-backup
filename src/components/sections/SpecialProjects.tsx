@@ -1,137 +1,159 @@
 "use client";
 
-import { useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
-
-import 'swiper/css';
+import { Carousel, type CarouselHandle } from '@/components/shared/Carousel';
 
 import BgProjetos from '@/assets/images/background-projetos.png';
-import LineHrCliente from '@/assets/images/line-hr-cliente.png';
 import Projeto1 from '@/assets/images/1-projeto.png';
 import Projeto2 from '@/assets/images/2-projeto.png';
 
 export function SpecialProjects() {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const carouselRef = useRef<CarouselHandle>(null);
 
+  // Novos dados baseados no protótipo (Mantive as imagens placeholder que você já tinha)
   const projetos = [
-    { cliente: 'S.Liz', projeto: 'Site', image: Projeto1 },
-    { cliente: 'Tecnoiso', projeto: 'Site', image: Projeto2 },
-    { cliente: 'Flores Joinville', projeto: 'Logo e Fachada', image: Projeto1 },
-    { cliente: 'ThunderFish', projeto: 'Site', image: Projeto2 },
+    {
+      cliente: 'Unimed Joinville',
+      segmento: 'Saúde',
+      desc: 'Portal completo para agendamento de consultas, exames e gestão de planos com integração em tempo real.',
+      image: Projeto1
+    },
+    {
+      cliente: 'Tecnoiso',
+      segmento: 'Indústria',
+      desc: 'Site institucional com apresentação de soluções industriais, cases de sucesso e área do cliente personalizada.',
+      image: Projeto2
+    },
+    {
+      cliente: 'Flores Joinville',
+      segmento: 'Meio Ambiente',
+      desc: 'Plataforma para apresentação de serviços, educação ambiental e solicitação de coleta de resíduos.',
+      image: Projeto1
+    },
+    {
+      cliente: 'Bellota Alimentos',
+      segmento: 'Alimentício',
+      desc: 'E-commerce completo com catálogo de produtos, pedidos online e gestão de entregas personalizada.',
+      image: Projeto2
+    },
   ];
 
   return (
-    <section 
-      id="projetos" 
-      // AQUI ESTÁ A CORREÇÃO: bg-cover em vez de bg-contain, garantindo o preenchimento total
+    <section
+      id="projetos"
       className="relative w-full py-20 lg:py-28 bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: `url(${BgProjetos.src})` }}
     >
-      <div className="max-w-[1200px] mx-auto px-4 relative z-10">
-        
+      <div className="max-w-[1300px] mx-auto px-4 relative z-10">
+
+        {/* Novo Cabeçalho do Protótipo */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex flex-col items-center justify-center mb-4 relative">
-            <h2 className="text-[#008FD5] text-5xl lg:text-6xl font-extrabold tracking-tight relative z-10">
-              Projetos
-            </h2>
-            <span 
-              className="text-[#E6007E] text-6xl lg:text-7xl absolute top-8 lg:top-10 z-20"
-              style={{ fontFamily: 'cursive', textShadow: '2px 2px 4px rgba(255,255,255,0.8)' }}
-            >
-              Especiais
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-[1px] bg-gray-300"></div>
+            <span className="text-[#E6007E] text-xs font-black tracking-widest uppercase">
+              Projetos Especiais
             </span>
-          </div>
-          
-          <div className="mt-12 lg:mt-16">
-            <Image 
-              src={LineHrCliente} 
-              alt="Divisor" 
-              width={240} 
-              height={20} 
-              className="object-contain mb-8"
-            />
+            <div className="w-12 h-[1px] bg-gray-300"></div>
           </div>
 
-          <p className="text-gray-600 text-[15px] lg:text-base max-w-3xl leading-relaxed">
-            Projetos Especiais: Onde sua demanda se transforma em uma solução customizada, criativa e inovadora. Cada visão é única e seu desafio é o que nos move.
+          <h2 className="text-[#0c1f44] text-4xl md:text-5xl lg:text-[42px] font-black mb-4 tracking-tight">
+            Conheça alguns <span className="text-[#E6007E]">projetos</span> que desenvolvemos
+          </h2>
+
+          <p className="text-gray-500 text-base md:text-lg font-medium max-w-2xl">
+            Cada solução é única, desenvolvida para atender desafios reais e gerar resultados que fazem a diferença.
           </p>
         </div>
 
+        {/* Carrossel de Projetos */}
         <div className="flex items-center justify-center gap-2 md:gap-4 relative px-2 md:px-8">
-          
-          <button 
-            onClick={() => swiperInstance?.slidePrev()}
-            className="flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-110 transition-transform flex-shrink-0 z-20 cursor-pointer absolute left-0 md:left-2"
+
+          <button
+            onClick={() => carouselRef.current?.prev()}
+            aria-label="Projeto anterior"
+            className="flex w-12 h-12 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer absolute left-0 md:left-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
 
-          <div className="w-full max-w-[1000px] overflow-visible py-8">
-            <Swiper
-              modules={[Autoplay, Navigation]}
-              spaceBetween={20}
-              slidesPerView={1}
-              loop={true}
-              speed={800} 
-              onSwiper={(swiper) => setSwiperInstance(swiper)}
-              autoplay={{ delay: 3000, disableOnInteraction: false }} 
-              breakpoints={{
-                640: { slidesPerView: 2, spaceBetween: 20 },
-                900: { slidesPerView: 3, spaceBetween: 30 },
-                1100: { slidesPerView: 4, spaceBetween: 30 },
-              }}
-              className="overflow-visible"
+          <div className="w-full max-w-[1150px]">
+            <Carousel
+              ref={carouselRef}
+              slidesPerView={{ base: 1, 768: 2, 1024: 3, 1280: 4 }}
+              gap={30}
+              loop
+              autoplay={4000}
+              ariaLabel="Projetos especiais desenvolvidos"
+              className="py-8"
+              slideClassName="flex pb-6"
             >
               {projetos.map((item, index) => (
-                <SwiperSlide key={index} className="flex justify-center pb-6">
-                  <div className="relative w-full max-w-[260px] bg-white rounded-[2rem] shadow-xl flex flex-col p-4 pt-6 h-[340px] mx-auto border border-gray-100 transition-transform duration-300 hover:-translate-y-2 group">
-                    
-                    <div className="text-center mb-4">
-                      <p className="text-gray-800 text-xs font-bold">Cliente: <span className="font-normal">{item.cliente}</span></p>
-                      <p className="text-gray-800 text-xs font-bold">Projeto: <span className="font-normal">{item.projeto}</span></p>
+                <div
+                  key={index}
+                  className="relative w-full bg-white rounded-[1.5rem] shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-2 h-full"
+                >
+                  {/* Imagem do Projeto */}
+                  <div className="relative w-full h-48 md:h-52 bg-gray-100 overflow-hidden border-b border-gray-100">
+                    <Image
+                      src={item.image}
+                      alt={`Projeto ${item.cliente}`}
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Informações do Projeto */}
+                  <div className="p-6 md:p-8 flex flex-col flex-1">
+
+                    <div className="flex justify-between items-start mb-4">
+                      {/* Cliente */}
+                      <div className="flex flex-col">
+                        <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3 text-[#E6007E]">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                          </svg>
+                          Cliente
+                        </span>
+                        <span className="text-[#0c1f44] font-extrabold text-[15px] mt-1">
+                          {item.cliente}
+                        </span>
+                      </div>
+
+                      {/* Segmento */}
+                      <div className="flex flex-col text-right">
+                        <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">
+                          Segmento
+                        </span>
+                        <span className="text-[#0c1f44] font-extrabold text-[15px] mt-1">
+                          {item.segmento}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="flex-1 w-full relative rounded-2xl overflow-hidden bg-gray-50 mb-4">
-                      <Image 
-                        src={item.image} 
-                        alt={`Projeto ${item.cliente}`} 
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-
-                    <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-[120px]">
-                      <button className="w-full bg-[#008FD5] text-white py-1.5 px-4 text-sm font-bold rounded-md shadow-md hover:bg-[#0077b5] transition-colors">
-                        Conheça
-                      </button>
-                    </div>
+                    {/* Descrição Limpa */}
+                    <p className="text-gray-500 text-sm leading-relaxed mt-2">
+                      {item.desc}
+                    </p>
 
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+            </Carousel>
           </div>
 
-          <button 
-            onClick={() => swiperInstance?.slideNext()}
-            className="flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-110 transition-transform flex-shrink-0 z-20 cursor-pointer absolute right-0 md:right-2"
+          <button
+            onClick={() => carouselRef.current?.next()}
+            aria-label="Próximo projeto"
+            className="flex w-12 h-12 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer absolute right-0 md:right-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
 
-        </div>
-
-        <div className="flex justify-center mt-12">
-          <button className="bg-[#E6007E] text-white text-lg font-bold py-3 px-12 rounded-sm shadow-lg hover:bg-[#c5006c] transition-colors shadow-pink-500/30">
-            Saiba mais
-          </button>
         </div>
 
       </div>

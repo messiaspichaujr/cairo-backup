@@ -1,7 +1,6 @@
 // src/app/page.tsx
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { Solutions } from "@/components/sections/Solutions";
 import { AreasDeAtuacao } from "@/components/sections/AreasDeAtuacao";
 import { Clients } from "@/components/sections/Clients";
 import { SpecialProjects } from "@/components/sections/SpecialProjects";
@@ -18,7 +17,6 @@ export default function Home() {
 
       <Hero />
       <AnimatedSection><About /></AnimatedSection>
-      <AnimatedSection delay={0.1}><Solutions /></AnimatedSection>
       <AnimatedSection delay={0.1}><AreasDeAtuacao /></AnimatedSection>
       <AnimatedSection delay={0.15}><Clients /></AnimatedSection>
       <AnimatedSection delay={0.15}><SpecialProjects /></AnimatedSection>

@@ -1,38 +1,35 @@
 "use client";
 
-import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
+import { useRef } from 'react';
+import { Carousel, type CarouselHandle } from '@/components/shared/Carousel';
 
-import 'swiper/css';
-
-// Usando o caminho da imagem que você forneceu
+// Usando o caminho da imagem do fundo
 import FundoDepoimentos from '@/assets-novo/WEBP/fundo-depoimentos.png';
 
 export function Testimonials() {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const carouselRef = useRef<CarouselHandle>(null);
 
+  // Depoimentos extraídos da planilha oficial (excluindo os não autorizados)
   const depoimentos = [
     {
-      nome: 'Fernando Andrade',
-      cargo: 'Diretor de TI',
-      empresa: 'VERDEMAIS',
-      texto: 'A Cairo TI elevou nossa infraestrutura a outro nível. Hoje temos mais segurança, performance e economia.',
+      nome: 'Julio César Bosco',
+      cargo: 'Gestor',
+      empresa: 'Grupo Tecnoiso',
+      texto: 'Essa parceria com a Cairo Tecnologia transformou nossa infraestrutura tecnológica por meio de um suporte técnico altamente responsável e engajado. Desde o início, a equipe demonstrou foco obstinado em resultados, alinhando soluções técnicas aos nossos objetivos de negócio. A dedicação diária e o propósito claro em servir com excelência garantem a continuidade e a segurança das nossas operações.',
       estrelas: 5,
     },
     {
-      nome: 'Juliana Martins',
-      cargo: 'CEO',
-      empresa: 'ARTCON',
-      texto: 'Profissionais extremamente competentes e comprometidos. A Cairo se tornou parceira estratégica do nosso negócio.',
+      nome: 'Vinicius Schiochet',
+      cargo: 'Gestor',
+      empresa: 'IdHera Medicina e Saúde',
+      texto: 'O Rodrigo e a Cairo já cuidam do nosso TI há 14 anos, sempre com serviço de excelência, atendendo as demandas e nos ajudando a manter tudo funcionando com um custo adequado, sem extravagâncias.',
       estrelas: 5,
     },
     {
-      nome: 'Ricardo Souza',
-      cargo: 'Gerente Financeiro',
-      empresa: 'BELLOTA',
-      texto: 'O suporte da Cairo é diferenciado. Sempre rápidos, eficientes e focados em soluções que geram resultados reais.',
+      nome: 'Cliente Cairo',
+      cargo: 'Desenvolvimento Web',
+      empresa: 'Projeto Web',
+      texto: 'Gostei muito da experiência do desenvolvimento do meu site. Desde o início foram muito atenciosos, disponíveis e ágeis em me auxiliar em todas as etapas. O suporte foi rápido, eficiente e muito cuidadoso. Fiquei muito satisfeita com o resultado e com o atendimento como um todo. Recomendo o trabalho pela competência e comprometimento.',
       estrelas: 5,
     }
   ];
@@ -47,13 +44,13 @@ export function Testimonials() {
   };
 
   return (
-    <section 
-      id="depoimentos" 
+    <section
+      id="depoimentos"
       className="w-full pt-24 pb-32 bg-[#020b1f] bg-cover bg-center bg-no-repeat relative overflow-hidden"
       style={{ backgroundImage: `url(${FundoDepoimentos.src})` }}
     >
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">
-        
+
         {/* Cabeçalho */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-4 mb-4">
@@ -73,9 +70,10 @@ export function Testimonials() {
 
         {/* Carrossel */}
         <div className="flex items-center justify-center gap-4 md:gap-6 relative px-2 md:px-12">
-          
-          <button 
-            onClick={() => swiperInstance?.slidePrev()}
+
+          <button
+            onClick={() => carouselRef.current?.prev()}
+            aria-label="Depoimento anterior"
             className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute left-0"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -84,62 +82,59 @@ export function Testimonials() {
           </button>
 
           <div className="w-full max-w-[1050px] py-4">
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              spaceBetween={30}
-              slidesPerView={1}
-              loop={true}
-              speed={800} 
-              onSwiper={(swiper) => setSwiperInstance(swiper)}
-              autoplay={{ delay: 4000, disableOnInteraction: false }} 
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-              className="px-2"
+            <Carousel
+              ref={carouselRef}
+              slidesPerView={{ base: 1, 768: 2, 1024: 3 }}
+              gap={24}
+              loop
+              autoplay={5000}
+              ariaLabel="Depoimentos de clientes"
+              className="py-4"
+              slideClassName="h-full"
             >
               {depoimentos.map((dep, index) => (
-                <SwiperSlide key={index} className="h-auto">
-                  <div className="bg-[#0a1635]/80 backdrop-blur-md rounded-2xl border border-white/5 p-8 flex flex-col h-full mx-2 shadow-2xl transition-transform duration-300 hover:-translate-y-2">
-                    
-                    {/* Estrelas */}
-                    <div className="flex gap-1 mb-6">
-                      {renderStars(dep.estrelas)}
-                    </div>
-
-                    {/* Texto com aspas */}
-                    <div className="flex gap-3 mb-8 flex-1">
-                      <span className="text-[#E6007E] text-2xl font-serif font-black leading-none mt-1">“</span>
-                      <p className="text-gray-200 text-sm leading-relaxed font-medium">
-                        {dep.texto}
-                      </p>
-                    </div>
-
-                    {/* Rodapé do Card (Perfil) */}
-                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
-                      {/* Avatar Placeholder */}
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                        {dep.nome.charAt(0)}
-                      </div>
-                      <div className="flex flex-col text-left">
-                        <span className="text-white font-bold text-sm tracking-tight">{dep.nome}</span>
-                        <span className="text-gray-400 text-xs mb-1">{dep.cargo}</span>
-                        {/* Logo da Empresa Placeholder */}
-                        <span className="text-white/60 font-black text-[10px] tracking-widest uppercase flex items-center gap-1">
-                          <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
-                          {dep.empresa}
-                        </span>
-                      </div>
-                    </div>
-
+                <div
+                  key={index}
+                  className="bg-[#0a1635]/80 backdrop-blur-md rounded-2xl border border-white/5 p-8 flex flex-col h-full shadow-2xl transition-transform duration-300 hover:-translate-y-2"
+                >
+                  {/* Estrelas */}
+                  <div className="flex gap-1 mb-6">
+                    {renderStars(dep.estrelas)}
                   </div>
-                </SwiperSlide>
+
+                  {/* Texto com aspas */}
+                  <div className="flex gap-3 mb-8 flex-1">
+                    <span className="text-[#E6007E] text-2xl font-serif font-black leading-none mt-1">“</span>
+                    <p className="text-gray-200 text-sm leading-relaxed font-medium">
+                      {dep.texto}
+                    </p>
+                  </div>
+
+                  {/* Rodapé do Card (Perfil) */}
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                    {/* Avatar Placeholder */}
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                      {dep.nome.charAt(0)}
+                    </div>
+                    <div className="flex flex-col text-left">
+                      <span className="text-white font-bold text-sm tracking-tight">{dep.nome}</span>
+                      <span className="text-gray-400 text-xs mb-1">{dep.cargo}</span>
+                      {/* Logo da Empresa Placeholder */}
+                      <span className="text-white/60 font-black text-[10px] tracking-widest uppercase flex items-center gap-1">
+                        <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                        {dep.empresa}
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
               ))}
-            </Swiper>
+            </Carousel>
           </div>
 
-          <button 
-            onClick={() => swiperInstance?.slideNext()}
+          <button
+            onClick={() => carouselRef.current?.next()}
+            aria-label="Próximo depoimento"
             className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute right-0"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
