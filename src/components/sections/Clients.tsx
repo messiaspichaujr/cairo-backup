@@ -54,7 +54,8 @@ export function Clients() {
 
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">
         
-        <div className="mb-16 md:mb-20 ml-4 md:ml-16 lg:ml-24">
+        {/* Adicionado flex e center para mobile ficar alinhado */}
+        <div className="mb-12 md:mb-20 ml-0 md:ml-16 lg:ml-24 text-center md:text-left flex flex-col items-center md:items-start">
           <h2 className="text-white text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-md">
             Clientes
           </h2>
@@ -72,28 +73,29 @@ export function Clients() {
 
         <div className="flex items-center justify-center gap-2 md:gap-6 relative">
           
+          {/* Escondemos as setas no Mobile (hidden md:flex) para priorizar o deslize com o dedo */}
           <button 
-            onClick={() => swiperInstance?.slideNext()}
-            className="flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-lg hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer"
+            onClick={() => swiperInstance?.slidePrev()}
+            className="hidden md:flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-lg hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
 
-          <div className="w-full max-w-5xl px-2">
+          <div className="w-full max-w-5xl px-0 md:px-2">
             <Swiper
               modules={[Autoplay]}
-              spaceBetween={20}
-              slidesPerView={1}
+              spaceBetween={15}
+              slidesPerView={2} // AQUI: Padrão mínimo de 2 logos por tela
               loop={true}
               speed={800}
               onSwiper={(swiper) => setSwiperInstance(swiper)}
               autoplay={{ delay: 2500, disableOnInteraction: false }}
               breakpoints={{
-                480: { slidesPerView: 2, spaceBetween: 20 },
-                768: { slidesPerView: 3, spaceBetween: 30 },
-                1024: { slidesPerView: 4, spaceBetween: 40 },
+                500: { slidesPerView: 3, spaceBetween: 20 },
+                768: { slidesPerView: 4, spaceBetween: 30 },
+                1024: { slidesPerView: 5, spaceBetween: 40 },
                 1280: { slidesPerView: 5, spaceBetween: 40 },
               }}
               className="py-6"
@@ -105,7 +107,7 @@ export function Clients() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     title={`Visitar o site de ${cliente.nome}`}
-                    className="block w-32 h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 bg-white rounded-full flex items-center justify-center p-2 shadow-xl transition-transform duration-300 mx-auto overflow-hidden group cursor-pointer"
+                    className="block w-40 h-40 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 bg-white rounded-full flex items-center justify-center p-2 shadow-xl transition-transform duration-300 mx-auto overflow-hidden group cursor-pointer"
                   >
                     <Image 
                       src={cliente.logo} 
@@ -119,8 +121,8 @@ export function Clients() {
           </div>
 
           <button 
-            onClick={() => swiperInstance?.slidePrev()}
-            className="flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-lg hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer"
+            onClick={() => swiperInstance?.slideNext()}
+            className="hidden md:flex w-10 h-10 bg-white rounded-full items-center justify-center text-[#E6007E] font-bold shadow-lg hover:scale-105 transition-transform flex-shrink-0 z-20 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
