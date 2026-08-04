@@ -3,8 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Assets
+// Assets Gerais
 import PerfilDono from '@/assets/images/sobre-cairo-perfil.png';
+
+// Assets das Certificações
+import CertGoogle from '@/assets/certificados/certificado-google.png';
+import CertMicrosoft from '@/assets/certificados/certificado-microsoft.jpeg';
 
 export function About() {
   const stats = [
@@ -40,19 +44,18 @@ export function About() {
     }
   ];
 
-  const pillars = [
-    { title: 'Consultoria em TI', desc: 'Estratégia e direcionamento', icon: '💡' },
-    { title: 'Infraestrutura & Cloud', desc: 'Ambientes seguros e escaláveis', icon: '☁️' },
-    { title: 'Cybersegurança', desc: 'Proteção total dos dados', icon: '🛡️' },
-    { title: 'Desenvolvimento Web', desc: 'Softwares sob medida', icon: '💻' }
+  // Matriz das imagens dos certificados
+  const certificacoes = [
+    { nome: 'Certificação Google', image: CertGoogle },
+    { nome: 'Certificação Microsoft', image: CertMicrosoft }
   ];
 
   return (
-    <section id="sobre" className="w-full bg-[#f8fafc] pt-24 pb-16 relative overflow-hidden">
+    <section id="sobre" className="w-full bg-[#f8fafc] pt-24 pb-20 relative overflow-hidden">
       <div className="absolute top-12 left-8 w-32 h-32 opacity-20 bg-[radial-gradient(#008fd5_1.5px,transparent_1.5px)] [background-size:12px_12px] hidden lg:block"></div>
       
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24 mb-20">
+        <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24 mb-16">
           
           <div className="w-full lg:w-5/12 flex justify-center relative">
             <div className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#E6007E] rounded-full shadow-md z-20"></div>
@@ -79,7 +82,6 @@ export function About() {
               <span className="text-[#E6007E]">vantagem competitiva.</span>
             </h2>
 
-            {/* AQUI: Texto solicitado pelo cliente */}
             <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mb-10 font-medium">
               Unindo 20 anos de experiência de sua liderança a 8 anos de história no mercado, ajudamos empresas de diferentes segmentos a crescerem através de soluções tecnológicas inteligentes, seguras e escaláveis.
             </p>
@@ -102,20 +104,37 @@ export function About() {
           </div>
         </div>
 
-        {/* Pilares inferiores com as novas soluções */}
-        <div className="w-full bg-white rounded-3xl border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 lg:divide-x divide-gray-100">
-          {pillars.map((pillar, idx) => (
-            <div key={idx} className={`flex items-start gap-4 pt-6 md:pt-0 ${idx > 0 ? 'lg:pl-6' : ''}`}>
-              <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
-                {pillar.icon}
+        {/* BLOCO DE CERTIFICAÇÕES ATUALIZADO PARA IMAGENS */}
+        <div className="w-full mt-16 pt-12 border-t border-gray-200/60">
+          <div className="flex flex-col items-center justify-center text-center mb-10">
+             <h3 className="text-[#0c1f44] text-2xl font-black tracking-tight mb-2">Certificações Oficiais</h3>
+             <p className="text-gray-500 text-sm">Garantia de excelência e parceria com as maiores empresas de tecnologia do mundo.</p>
+          </div>
+          
+          {/* Grid centralizado com largura máxima para não esticar as imagens */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            {certificacoes.map((cert, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col items-center justify-center gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+              >
+                {/* Contêiner da Imagem */}
+                <div className="relative w-full h-32 md:h-40 overflow-hidden rounded-lg">
+                  <Image 
+                    src={cert.image} 
+                    alt={cert.nome} 
+                    fill
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <span className="font-extrabold text-gray-700 text-sm md:text-base group-hover:text-[#008FD5] transition-colors">
+                  {cert.nome}
+                </span>
               </div>
-              <div className="flex flex-col text-left">
-                <h4 className="text-gray-900 font-extrabold text-[15px] mb-1">{pillar.title}</h4>
-                <p className="text-gray-400 font-medium text-xs leading-relaxed">{pillar.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );

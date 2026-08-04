@@ -28,4 +28,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Exibe o site em 90% por padrão (equivale ao "Ctrl -" do navegador). */
+  zoom: 0.9;
 }
