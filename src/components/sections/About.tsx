@@ -9,6 +9,8 @@ import PerfilDono from '@/assets/images/sobre-cairo-perfil.png';
 // Assets das Certificações
 import CertGoogle from '@/assets/certificados/certificado-google.png';
 import CertMicrosoft from '@/assets/certificados/certificado-microsoft.jpeg';
+import CertCybersecurity from '@/assets/certificados/URSCA.jpeg';
+import CertWireless from '@/assets/certificados/UWA.jpeg';
 
 export function About() {
   const stats = [
@@ -47,7 +49,9 @@ export function About() {
   // Matriz das imagens dos certificados
   const certificacoes = [
     { nome: 'Certificação Google', image: CertGoogle },
-    { nome: 'Certificação Microsoft', image: CertMicrosoft }
+    { nome: 'Certificação Microsoft', image: CertMicrosoft },
+    { nome: 'Certificado Cybersecurity', image: CertCybersecurity },
+    { nome: 'Certificado Wireless', image: CertWireless }
   ];
 
   return (
@@ -104,15 +108,15 @@ export function About() {
           </div>
         </div>
 
-        {/* BLOCO DE CERTIFICAÇÕES ATUALIZADO PARA IMAGENS */}
+        {/* BLOCO DE CERTIFICAÇÕES */}
         <div className="w-full mt-16 pt-12 border-t border-gray-200/60">
           <div className="flex flex-col items-center justify-center text-center mb-10">
              <h3 className="text-[#0c1f44] text-2xl font-black tracking-tight mb-2">Certificações Oficiais</h3>
              <p className="text-gray-500 text-sm">Garantia de excelência e parceria com as maiores empresas de tecnologia do mundo.</p>
           </div>
           
-          {/* Grid centralizado com largura máxima para não esticar as imagens */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          {/* Grid responsivo: 1 coluna no mobile, 2 no tablet, 4 no desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {certificacoes.map((cert, idx) => (
               <div 
                 key={idx} 
@@ -127,7 +131,7 @@ export function About() {
                     className="object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <span className="font-extrabold text-gray-700 text-sm md:text-base group-hover:text-[#008FD5] transition-colors">
+                <span className="font-extrabold text-gray-700 text-sm md:text-base text-center group-hover:text-[#008FD5] transition-colors">
                   {cert.nome}
                 </span>
               </div>
