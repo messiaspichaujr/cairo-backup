@@ -9,27 +9,62 @@ import FundoDepoimentos from '@/assets-novo/WEBP/fundo-depoimentos.png';
 export function Testimonials() {
   const carouselRef = useRef<CarouselHandle>(null);
 
-  // Depoimentos extraídos da planilha oficial (excluindo os não autorizados)
+  // Depoimentos atualizados, limpos e formatados (8 itens)
   const depoimentos = [
     {
+      nome: 'Cliente',
+      cargo: 'Cliente',
+      empresa: 'Desenvolvimento Web',
+      texto: 'Gostei muito da experiência do desenvolvimento do meu site. Desde o início foram muito atenciosos, disponíveis e ágeis em me auxiliar em todas as etapas. Além de entregarem o site, também me ajudaram no processo de alimentação do conteúdo. Fiquei muito satisfeita com o resultado e com o atendimento como um todo.',
+      estrelas: 5,
+    },
+    {
       nome: 'Julio César Bosco',
-      cargo: 'Gestor',
+      cargo: 'Cliente',
       empresa: 'Grupo Tecnoiso',
-      texto: 'Essa parceria com a Cairo Tecnologia transformou nossa infraestrutura tecnológica por meio de um suporte técnico altamente responsável e engajado. Desde o início, a equipe demonstrou foco obstinado em resultados, alinhando soluções técnicas aos nossos objetivos de negócio. A dedicação diária e o propósito claro em servir com excelência garantem a continuidade e a segurança das nossas operações.',
+      texto: 'Essa parceria com a Cairo Tecnologia transformou nossa infraestrutura tecnológica por meio de um suporte técnico altamente responsável e engajado. A dedicação diária e o propósito claro em servir com excelência garantem a continuidade e a segurança das nossas operações.',
       estrelas: 5,
     },
     {
       nome: 'Vinicius Schiochet',
-      cargo: 'Gestor',
+      cargo: 'Cliente',
       empresa: 'IdHera Medicina e Saúde',
-      texto: 'O Rodrigo e a Cairo já cuidam do nosso TI há 14 anos, sempre com serviço de excelência, atendendo as demandas e nos ajudando a manter tudo funcionando com um custo adequado, sem extravagâncias.',
+      texto: 'O Rodrigo e a equipe da Cairo já cuidam de nosso TI há 14 anos, sempre com serviço de excelência, atendendo as demandas e nos ajudando a manter tudo funcionando com um custo adequado, sem extravagâncias.',
       estrelas: 5,
     },
     {
-      nome: 'Cliente Cairo',
-      cargo: 'Desenvolvimento Web',
-      empresa: 'Projeto Web',
-      texto: 'Gostei muito da experiência do desenvolvimento do meu site. Desde o início foram muito atenciosos, disponíveis e ágeis em me auxiliar em todas as etapas. O suporte foi rápido, eficiente e muito cuidadoso. Fiquei muito satisfeita com o resultado e com o atendimento como um todo. Recomendo o trabalho pela competência e comprometimento.',
+      nome: 'Gean Marcos D. Correa',
+      cargo: 'Cliente',
+      empresa: 'SolvoBR',
+      texto: 'Conheço o Rodrigo há mais de 20 anos e sei da sua competência técnica que busca sempre não somente a melhor opção para seus clientes, mas sim a mais adequada para sua atual realidade. Deixo o relato de uma total confiança no Rodrigo e em sua equipe.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Carla Merkle',
+      cargo: 'Cliente',
+      empresa: 'Avaliação de Imóveis',
+      texto: 'Trabalho com eles há anos. Pessoas de confiança, sabe? Fizeram o meu site e o site do meu esposo, cuidam dos nossos computadores e nos salvam sempre que precisamos quando o assunto é computador!',
+      estrelas: 5,
+    },
+    {
+      nome: 'Guilherme Aquino',
+      cargo: 'Cliente',
+      empresa: 'Reis & Pereira Advocacia',
+      texto: 'O suporte prestado pelo Rodrigo e toda a sua equipe da Cairo é ágil, resolutivo e conduzido com grande profissionalismo. É uma empresa séria que transmite segurança e se destaca pela qualidade da parceria.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Vinicius',
+      cargo: 'Cliente',
+      empresa: 'SteelGuard',
+      texto: 'A Cairo está sempre disponível quando precisamos e disposta a apresentar soluções que cabem no nosso orçamento.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Mauro',
+      cargo: 'Cliente',
+      empresa: 'Suin',
+      texto: 'Empresa parceira há muitos anos, sempre trazendo soluções para todas as nossas demandas.',
       estrelas: 5,
     }
   ];
@@ -142,16 +177,6 @@ export function Testimonials() {
             </svg>
           </button>
 
-        </div>
-
-        {/* Botão Ver Mais */}
-        <div className="flex justify-center mt-12 relative z-20">
-          <button className="bg-transparent border border-[#E6007E] text-white text-sm font-bold py-3 px-8 rounded-full hover:bg-[#E6007E] transition-colors flex items-center gap-3">
-            Ver mais depoimentos
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 text-[#E6007E] hover:text-white">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </button>
         </div>
 
       </div>

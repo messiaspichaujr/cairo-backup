@@ -8,7 +8,6 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { Location } from "@/components/sections/Location";
 import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/layout/Footer";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 
 export default function Home() {
@@ -24,7 +23,6 @@ export default function Home() {
       <AnimatedSection delay={0.15}><FAQ /></AnimatedSection>
       <AnimatedSection delay={0.2}><Location /></AnimatedSection>
       <AnimatedSection delay={0.2}><Contact /></AnimatedSection>
-      <AnimatedSection delay={0.2}><Footer /></AnimatedSection>
 
     </main>
   );

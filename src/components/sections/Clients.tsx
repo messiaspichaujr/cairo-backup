@@ -156,14 +156,14 @@ export function Clients() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     title={`Visitar o site de ${cliente.nome}`}
-                    className="w-full h-[280px] bg-[#061129]/80 backdrop-blur-md border border-white/5 hover:border-white/20 rounded-3xl p-6 flex flex-col items-center transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-[0_0_30px_rgba(230,0,126,0.1)]"
+                    className="w-full h-[280px] bg-[#061129]/80 backdrop-blur-md border border-white/5 hover:border-white/20 rounded-3xl p-5 flex flex-col items-center transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-[0_0_30px_rgba(230,0,126,0.1)]"
                   >
-                    {/* Área centralizada para a Logo */}
-                    <div className="flex-1 w-full flex items-center justify-center p-2 mb-4">
+                    {/* Área centralizada para a Logo COM FUNDO BRANCO */}
+                    <div className="flex-1 w-full flex items-center justify-center p-4 mb-4 bg-white rounded-2xl shadow-sm">
                       <Image 
                         src={cliente.logo} 
                         alt={`Logo Cliente ${cliente.nome}`} 
-                        className="max-w-full max-h-[110px] object-contain group-hover:scale-105 transition-transform duration-500"
+                        className="max-w-full max-h-[90px] object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     

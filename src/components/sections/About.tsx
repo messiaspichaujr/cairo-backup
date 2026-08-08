@@ -3,12 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Assets Gerais
 import PerfilDono from '@/assets/images/sobre-cairo-perfil.png';
 
-// Assets das Certificações
 import CertGoogle from '@/assets/certificados/certificado-google.png';
-import CertMicrosoft from '@/assets/certificados/certificado-microsoft.jpeg';
+import CertUfs from '@/assets/certificados/certificado-microsoft.jpeg'; 
+import CertMicrosoftReal from '@/assets/certificados/certified-microsoft.jpeg';
 import CertCybersecurity from '@/assets/certificados/URSCA.jpeg';
 import CertWireless from '@/assets/certificados/UWA.jpeg';
 
@@ -46,10 +45,11 @@ export function About() {
     }
   ];
 
-  // Matriz das imagens dos certificados
+  // Matriz corrigida com as 5 certificações
   const certificacoes = [
     { nome: 'Certificação Google', image: CertGoogle },
-    { nome: 'Certificação Microsoft', image: CertMicrosoft },
+    { nome: 'Certificado UFSP Full Stack', image: CertUfs },
+    { nome: 'Certificação Microsoft', image: CertMicrosoftReal },
     { nome: 'Certificado Cybersecurity', image: CertCybersecurity },
     { nome: 'Certificado Wireless', image: CertWireless }
   ];
@@ -100,7 +100,7 @@ export function About() {
               ))}
             </div>
 
-            <Link href="#sobre" className="bg-[#E6007E] hover:bg-[#c5006c] text-white font-extrabold px-8 py-3.5 rounded-full text-sm shadow-md shadow-pink-600/10 transition-all flex items-center gap-2 group w-max">
+            <Link href="/historia" className="bg-[#E6007E] hover:bg-[#c5006c] text-white font-extrabold px-8 py-3.5 rounded-full text-sm shadow-md shadow-pink-600/10 transition-all flex items-center gap-2 group w-max">
               Conheça nossa história
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
@@ -115,15 +115,15 @@ export function About() {
              <p className="text-gray-500 text-sm">Garantia de excelência e parceria com as maiores empresas de tecnologia do mundo.</p>
           </div>
           
-          {/* Grid responsivo: 1 coluna no mobile, 2 no tablet, 4 no desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {/* Grid responsivo ajustado para 5 colunas no Desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-[1300px] mx-auto">
             {certificacoes.map((cert, idx) => (
               <div 
                 key={idx} 
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col items-center justify-center gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col items-center justify-between gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
               >
                 {/* Contêiner da Imagem */}
-                <div className="relative w-full h-32 md:h-40 overflow-hidden rounded-lg">
+                <div className="relative w-full h-28 md:h-32 overflow-hidden rounded-lg">
                   <Image 
                     src={cert.image} 
                     alt={cert.nome} 
@@ -131,7 +131,7 @@ export function About() {
                     className="object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <span className="font-extrabold text-gray-700 text-sm md:text-base text-center group-hover:text-[#008FD5] transition-colors">
+                <span className="font-extrabold text-gray-700 text-xs text-center group-hover:text-[#008FD5] transition-colors line-clamp-2 min-h-[32px]">
                   {cert.nome}
                 </span>
               </div>

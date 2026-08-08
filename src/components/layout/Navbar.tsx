@@ -30,6 +30,10 @@ export function Navbar() {
     setIsMegaMenuOpen(!isMegaMenuOpen);
   };
 
+  const closeMegaMenu = () => {
+    setIsMegaMenuOpen(false);
+  }
+
   // Controles do Menu Mobile
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -75,7 +79,7 @@ export function Navbar() {
 
             {/* Menu Desktop */}
             <nav className="hidden lg:flex items-center gap-8 font-semibold text-gray-700 mt-1">
-              <Link href="#sobre" className="hover:text-[#E6007E] transition-colors py-2 cursor-pointer">Quem somos</Link>
+              <Link href="/historia" className="hover:text-[#E6007E] transition-colors py-2 cursor-pointer">Quem somos</Link>
               
               <div 
                 className="relative py-2 cursor-pointer group"
@@ -92,14 +96,14 @@ export function Navbar() {
                 <div className={`absolute bottom-0 left-0 h-[3px] bg-[#E6007E] transition-all duration-300 ${isMegaMenuOpen ? 'w-full' : 'w-0'}`}></div>
               </div>
 
-              <Link href="#contato" className="hover:text-[#E6007E] transition-colors py-2 cursor-pointer">Contato</Link>
+              <Link href="/#contato" className="hover:text-[#E6007E] transition-colors py-2 cursor-pointer">Contato</Link>
             </nav>
           </div>
 
           {/* CTA Desktop */}
           <div className="hidden lg:flex items-center gap-6">
             <Link 
-              href="#contato" 
+              href="/#contato" 
               className="bg-[#E6007E] text-white px-6 py-3 rounded-full font-bold text-sm shadow-md hover:bg-[#c5006c] transition-all flex items-center gap-2 group cursor-pointer"
             >
               Solicite uma proposta
@@ -134,7 +138,7 @@ export function Navbar() {
           >
             <div className="flex flex-col p-6 gap-6">
               
-              <Link href="#sobre" onClick={closeMobileMenu} className="text-gray-800 font-extrabold text-lg flex items-center justify-between border-b border-gray-100 pb-4">
+              <Link href="/historia" onClick={closeMobileMenu} className="text-gray-800 font-extrabold text-lg flex items-center justify-between border-b border-gray-100 pb-4">
                 Quem somos
                 <span className="text-[#E6007E]">&gt;</span>
               </Link>
@@ -143,22 +147,22 @@ export function Navbar() {
               <div className="flex flex-col border-b border-gray-100 pb-4">
                 <span className="text-[#E6007E] font-black text-lg mb-4">Soluções</span>
                 <div className="flex flex-col gap-4 pl-4">
-                  <Link href="#atuacao" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
+                  <Link href="/solucoes/consultoria" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
                     <span className="text-xl">💡</span> Consultoria em TI
                   </Link>
-                  <Link href="#atuacao" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
+                  <Link href="/solucoes/infraestrutura" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
                     <span className="text-xl">☁️</span> Infraestrutura & Cloud
                   </Link>
-                  <Link href="#atuacao" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
+                  <Link href="/solucoes/cyberseguranca" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
                     <span className="text-xl">🛡️</span> Cybersegurança
                   </Link>
-                  <Link href="#atuacao" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
+                  <Link href="/solucoes/desenvolvimento" onClick={closeMobileMenu} className="flex items-center gap-3 text-gray-600 font-bold">
                     <span className="text-xl">💻</span> Desenvolvimento Web
                   </Link>
                 </div>
               </div>
 
-              <Link href="#contato" onClick={closeMobileMenu} className="text-gray-800 font-extrabold text-lg flex items-center justify-between border-b border-gray-100 pb-4">
+              <Link href="/#contato" onClick={closeMobileMenu} className="text-gray-800 font-extrabold text-lg flex items-center justify-between border-b border-gray-100 pb-4">
                 Contato
                 <span className="text-[#E6007E]">&gt;</span>
               </Link>
@@ -192,28 +196,28 @@ export function Navbar() {
           >
             <div className="max-w-[900px] mx-auto my-6 bg-white rounded-3xl p-6 border border-gray-100">
               <div className="grid grid-cols-2 gap-4">
-                <Link href="#atuacao" className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
+                <Link href="/solucoes/consultoria" onClick={closeMegaMenu} className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
                   <div className="w-12 h-12 bg-slate-50 group-hover:bg-white rounded-lg flex items-center justify-center text-2xl shadow-sm">💡</div>
                   <div className="flex flex-col">
                     <span className="font-extrabold text-gray-800 group-hover:text-[#E6007E]">Consultoria em TI</span>
                     <span className="text-xs text-gray-500 mt-1">Estratégia e direcionamento tecnológico.</span>
                   </div>
                 </Link>
-                <Link href="#atuacao" className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
+                <Link href="/solucoes/infraestrutura" onClick={closeMegaMenu} className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
                   <div className="w-12 h-12 bg-slate-50 group-hover:bg-white rounded-lg flex items-center justify-center text-2xl shadow-sm">☁️</div>
                   <div className="flex flex-col">
                     <span className="font-extrabold text-gray-800 group-hover:text-[#E6007E]">Infraestrutura & Cloud</span>
                     <span className="text-xs text-gray-500 mt-1">Ambientes seguros e escaláveis.</span>
                   </div>
                 </Link>
-                <Link href="#atuacao" className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
+                <Link href="/solucoes/cyberseguranca" onClick={closeMegaMenu} className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
                   <div className="w-12 h-12 bg-slate-50 group-hover:bg-white rounded-lg flex items-center justify-center text-2xl shadow-sm">🛡️</div>
                   <div className="flex flex-col">
                     <span className="font-extrabold text-gray-800 group-hover:text-[#E6007E]">Cybersegurança</span>
                     <span className="text-xs text-gray-500 mt-1">Proteção total para os seus dados.</span>
                   </div>
                 </Link>
-                <Link href="#atuacao" className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
+                <Link href="/solucoes/desenvolvimento" onClick={closeMegaMenu} className="p-4 rounded-xl flex items-center gap-4 transition-all hover:bg-pink-50 group border border-transparent hover:border-pink-100 cursor-pointer">
                   <div className="w-12 h-12 bg-slate-50 group-hover:bg-white rounded-lg flex items-center justify-center text-2xl shadow-sm">💻</div>
                   <div className="flex flex-col">
                     <span className="font-extrabold text-gray-800 group-hover:text-[#E6007E]">Desenvolvimento Web</span>
