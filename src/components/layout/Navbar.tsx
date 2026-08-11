@@ -11,7 +11,7 @@ import Logo from '@/assets/images/Logo.png';
 export function Navbar() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false); // Novo estado para o Modal do Vídeo
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false); 
   
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
