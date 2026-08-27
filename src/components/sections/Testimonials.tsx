@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Carousel, type CarouselHandle } from '@/components/shared/Carousel';
 
 // Usando o caminho da imagem do fundo
@@ -8,49 +8,24 @@ import FundoDepoimentos from '@/assets-novo/WEBP/fundo-depoimentos.png';
 
 export function Testimonials() {
   const carouselRef = useRef<CarouselHandle>(null);
+  
+  // Estado para controlar o modal
+  const [selectedDepoimento, setSelectedDepoimento] = useState<any | null>(null);
 
-  // Depoimentos atualizados, limpos e formatados (8 itens)
+  // Depoimentos atualizados, limpos e formatados
   const depoimentos = [
     {
       nome: 'Cliente',
       cargo: 'Cliente',
       empresa: 'Desenvolvimento Web',
-      texto: 'Gostei muito da experiência do desenvolvimento do meu site. Desde o início foram muito atenciosos, disponíveis e ágeis em me auxiliar em todas as etapas. Além de entregarem o site, também me ajudaram no processo de alimentação do conteúdo. Fiquei muito satisfeita com o resultado e com o atendimento como um todo.',
+      texto: 'Gostei muito da experiência do desenvolvimento do meu site. Desde o início foram muito atenciosos, disponíveis e ágeis em me auxiliar em todas as etapas. Além de entregarem o site, também me ajudaram no processo de alimentação do conteúdo, orientando sobre como inserir informações, ajustar textos e principalmente como trabalhar com as imagens da melhor forma. Sempre que tive dúvidas, fui prontamente atendida, com explicações claras e muita paciência. Fiquei muito satisfeita com o resultado e com o atendimento como um todo. Recomendo o trabalho pela competência, atenção e comprometimento com o cliente.',
       estrelas: 5,
     },
     {
       nome: 'Julio César Bosco',
       cargo: 'Cliente',
       empresa: 'Grupo Tecnoiso',
-      texto: 'Essa parceria com a Cairo Tecnologia transformou nossa infraestrutura tecnológica por meio de um suporte técnico altamente responsável e engajado. A dedicação diária e o propósito claro em servir com excelência garantem a continuidade e a segurança das nossas operações.',
-      estrelas: 5,
-    },
-    {
-      nome: 'Vinicius Schiochet',
-      cargo: 'Cliente',
-      empresa: 'IdHera Medicina e Saúde',
-      texto: 'O Rodrigo e a equipe da Cairo já cuidam de nosso TI há 14 anos, sempre com serviço de excelência, atendendo as demandas e nos ajudando a manter tudo funcionando com um custo adequado, sem extravagâncias.',
-      estrelas: 5,
-    },
-    {
-      nome: 'Gean Marcos D. Correa',
-      cargo: 'Cliente',
-      empresa: 'SolvoBR',
-      texto: 'Conheço o Rodrigo há mais de 20 anos e sei da sua competência técnica que busca sempre não somente a melhor opção para seus clientes, mas sim a mais adequada para sua atual realidade. Deixo o relato de uma total confiança no Rodrigo e em sua equipe.',
-      estrelas: 5,
-    },
-    {
-      nome: 'Carla Merkle',
-      cargo: 'Cliente',
-      empresa: 'Avaliação de Imóveis',
-      texto: 'Trabalho com eles há anos. Pessoas de confiança, sabe? Fizeram o meu site e o site do meu esposo, cuidam dos nossos computadores e nos salvam sempre que precisamos quando o assunto é computador!',
-      estrelas: 5,
-    },
-    {
-      nome: 'Guilherme Aquino',
-      cargo: 'Cliente',
-      empresa: 'Reis & Pereira Advocacia',
-      texto: 'O suporte prestado pelo Rodrigo e toda a sua equipe da Cairo é ágil, resolutivo e conduzido com grande profissionalismo. É uma empresa séria que transmite segurança e se destaca pela qualidade da parceria.',
+      texto: 'Essa parceria com a Cairo Tecnologia transformou nossa infraestrutura tecnológica por meio de um suporte técnico altamente responsável e engajado. Desde o início, a equipe demonstrou foco obstinado em resultados, alinhando soluções técnicas aos nossos objetivos de negócio. A dedicação diária e o propósito claro em servir com excelência garantem a continuidade e a segurança das nossas operações.',
       estrelas: 5,
     },
     {
@@ -61,10 +36,59 @@ export function Testimonials() {
       estrelas: 5,
     },
     {
+      nome: 'Vinicius Schiochet',
+      cargo: 'Cliente',
+      empresa: 'IdHera Medicina e Saúde',
+      texto: 'O Rodrigo / Cairo já cuida de nosso TI há 14 anos, sempre com serviço de excelência, atendendo as demandas e nos ajudando a manter tudo funcionando com um custo adequado, sem extravagâncias.',
+      estrelas: 5,
+    },
+    {
       nome: 'Mauro',
       cargo: 'Cliente',
       empresa: 'Suin',
-      texto: 'Empresa parceira há muitos anos, sempre trazendo soluções para todas as nossas demandas.',
+      texto: 'Empresa parceira há muitos anos, sempre trazendo soluções para todas nossas demandas.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Gean Marcos D. Correa',
+      cargo: 'Cliente',
+      empresa: 'SOLVOBR',
+      texto: 'Conheço o Rodrigo há mais de 20 anos e sei da sua competência técnica que busca sempre não somente a melhor opção para seus clientes, mas sim a mais adequada para sua atual realidade. Como pessoas que atuam na área técnica tem acesso a muitas informações confidenciais e estratégicas, deixo também o relato de uma total confiança no Rodrigo e em sua equipe pois em todo este período, jamais tive quaisquer problemas nestes assuntos.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Carla Merkle',
+      cargo: 'Cliente',
+      empresa: 'Avaliação de Imóveis',
+      texto: 'Trabalho com eles a anos. Pessoas de confiança, sabe? Fizeram o meu site e do site do meu esposo, cuidam dos nossos computadores e nos salvam sempre que precisamos quando o assunto é computador!',
+      estrelas: 5,
+    },
+    {
+      nome: 'Guilherme Aquino R. Pereira',
+      cargo: 'Cliente',
+      empresa: 'Reis & Pereira Advocacia',
+      texto: 'O suporte prestado pelo Rodrigo e toda a sua equipe da Cairo é ágil, resolutivo e conduzido com grande profissionalismo. É uma empresa séria que transmite segurança e se destaca pela qualidade da parceria.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Roberson Rodrigo Thrun',
+      cargo: 'Cliente',
+      empresa: 'ICbras Indústria e Comércio',
+      texto: 'A Cairo é parceira de tecnologia da nossa empresa, cuidando de nossa infraestrutura de servidores, serviços em nuvem, backup e segurança da informação. O atendimento aos chamados é ágil e tecnicamente sólido, com explicações claras mesmo diante de questões complexas. Recomendamos a Cairo para empresas que buscam um parceiro de TI competente e confiável.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Joanilse',
+      cargo: 'Cliente',
+      empresa: 'Alianza Engenharia',
+      texto: 'Ótimo atendimento! Profissionais comprometidos e competentes. Nos atendem a anos.',
+      estrelas: 5,
+    },
+    {
+      nome: 'Willian Schmitt',
+      cargo: 'Cliente',
+      empresa: 'Horizonte Contabilidade',
+      texto: 'A Horizonte Contabilidade é cliente da Cairo Tecnologia há muitos anos e sempre encontrou uma equipe altamente competente, comprometida e confiável. Ao longo dessa parceria, a Cairo tem sido fundamental para garantir a estabilidade, a segurança e o desempenho de toda a nossa infraestrutura de tecnologia. É uma empresa que transmite segurança e confiança, permitindo que possamos focar em nosso negócio com a tranquilidade de contar com um suporte de alto nível.',
       estrelas: 5,
     }
   ];
@@ -79,107 +103,173 @@ export function Testimonials() {
   };
 
   return (
-    <section
-      id="depoimentos"
-      className="w-full pt-24 pb-32 bg-[#020b1f] bg-cover bg-center bg-no-repeat relative overflow-hidden"
-      style={{ backgroundImage: `url(${FundoDepoimentos.src})` }}
-    >
-      <div className="max-w-[1200px] mx-auto px-4 relative z-10">
+    <>
+      <section
+        id="depoimentos"
+        className="w-full pt-24 pb-32 bg-[#020b1f] bg-cover bg-center bg-no-repeat relative overflow-hidden"
+        style={{ backgroundImage: `url(${FundoDepoimentos.src})` }}
+      >
+        <div className="max-w-[1200px] mx-auto px-4 relative z-10">
 
-        {/* Cabeçalho */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-[1px] bg-[#E6007E]"></div>
-            <span className="text-[#E6007E] text-sm font-bold tracking-widest uppercase">
-              Depoimentos
-            </span>
-            <div className="w-10 h-[1px] bg-[#E6007E]"></div>
+          {/* Cabeçalho */}
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-10 h-[1px] bg-[#E6007E]"></div>
+              <span className="text-[#E6007E] text-sm font-bold tracking-widest uppercase">
+                Depoimentos
+              </span>
+              <div className="w-10 h-[1px] bg-[#E6007E]"></div>
+            </div>
+            <h2 className="text-white text-5xl font-extrabold mb-4 tracking-tight">
+              Quem confia, recomenda.
+            </h2>
+            <p className="text-gray-300 text-lg font-medium">
+              Veja o que nossos clientes dizem sobre a experiência<br className="hidden md:block" /> de trabalhar com a Cairo.
+            </p>
           </div>
-          <h2 className="text-white text-5xl font-extrabold mb-4 tracking-tight">
-            Quem confia, recomenda.
-          </h2>
-          <p className="text-gray-300 text-lg font-medium">
-            Veja o que nossos clientes dizem sobre a experiência<br className="hidden md:block" /> de trabalhar com a Cairo.
-          </p>
-        </div>
 
-        {/* Carrossel */}
-        <div className="flex items-center justify-center gap-4 md:gap-6 relative px-2 md:px-12">
+          {/* Carrossel */}
+          <div className="flex items-center justify-center gap-4 md:gap-6 relative px-2 md:px-12">
 
-          <button
-            onClick={() => carouselRef.current?.prev()}
-            aria-label="Depoimento anterior"
-            className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute left-0"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-
-          <div className="w-full max-w-[1050px] py-4">
-            <Carousel
-              ref={carouselRef}
-              slidesPerView={{ base: 1, 768: 2, 1024: 3 }}
-              gap={24}
-              loop
-              autoplay={5000}
-              ariaLabel="Depoimentos de clientes"
-              className="py-4"
-              slideClassName="h-full"
+            <button
+              onClick={() => carouselRef.current?.prev()}
+              aria-label="Depoimento anterior"
+              className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute left-0"
             >
-              {depoimentos.map((dep, index) => (
-                <div
-                  key={index}
-                  className="bg-[#0a1635]/80 backdrop-blur-md rounded-2xl border border-white/5 p-8 flex flex-col h-full shadow-2xl transition-transform duration-300 hover:-translate-y-2"
-                >
-                  {/* Estrelas */}
-                  <div className="flex gap-1 mb-6">
-                    {renderStars(dep.estrelas)}
-                  </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
 
-                  {/* Texto com aspas */}
-                  <div className="flex gap-3 mb-8 flex-1">
-                    <span className="text-[#E6007E] text-2xl font-serif font-black leading-none mt-1">“</span>
-                    <p className="text-gray-200 text-sm leading-relaxed font-medium">
-                      {dep.texto}
-                    </p>
-                  </div>
-
-                  {/* Rodapé do Card (Perfil) */}
-                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
-                    {/* Avatar Placeholder */}
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      {dep.nome.charAt(0)}
+            <div className="w-full max-w-[1050px] py-4">
+              <Carousel
+                ref={carouselRef}
+                slidesPerView={{ base: 1, 768: 2, 1024: 3 }}
+                gap={24}
+                loop
+                autoplay={5000}
+                ariaLabel="Depoimentos de clientes"
+                className="py-4"
+                slideClassName="h-full"
+              >
+                {depoimentos.map((dep, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#0a1635]/80 backdrop-blur-md rounded-2xl border border-white/5 p-8 flex flex-col h-full shadow-2xl transition-transform duration-300 hover:-translate-y-2 min-h-[340px]"
+                  >
+                    {/* Estrelas */}
+                    <div className="flex gap-1 mb-6">
+                      {renderStars(dep.estrelas)}
                     </div>
-                    <div className="flex flex-col text-left">
-                      <span className="text-white font-bold text-sm tracking-tight">{dep.nome}</span>
-                      <span className="text-gray-400 text-xs mb-1">{dep.cargo}</span>
-                      {/* Logo da Empresa Placeholder */}
-                      <span className="text-white/60 font-black text-[10px] tracking-widest uppercase flex items-center gap-1">
-                        <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
-                        {dep.empresa}
-                      </span>
-                    </div>
-                  </div>
 
-                </div>
-              ))}
-            </Carousel>
+                    {/* Texto com aspas e limitador */}
+                    <div className="flex gap-3 mb-6 flex-1">
+                      <span className="text-[#E6007E] text-2xl font-serif font-black leading-none mt-1">“</span>
+                      <div className="flex flex-col items-start w-full">
+                        <p className="text-gray-200 text-sm leading-relaxed font-medium line-clamp-4">
+                          {dep.texto}
+                        </p>
+                        
+                        {/* Botão de Ler Mais (Só aparece se o texto for grande) */}
+                        {dep.texto.length > 150 && (
+                          <button
+                            onClick={() => setSelectedDepoimento(dep)}
+                            className="text-[#008FD5] hover:text-[#E6007E] text-xs font-bold mt-2 transition-colors cursor-pointer"
+                          >
+                            Ler relato completo +
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Rodapé do Card (Perfil) */}
+                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                        {dep.nome.charAt(0)}
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className="text-white font-bold text-sm tracking-tight">{dep.nome}</span>
+                        <span className="text-gray-400 text-xs mb-1">{dep.cargo}</span>
+                        <span className="text-white/60 font-black text-[10px] tracking-widest uppercase flex items-center gap-1">
+                          <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                          {dep.empresa}
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+
+            <button
+              onClick={() => carouselRef.current?.next()}
+              aria-label="Próximo depoimento"
+              className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute right-0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+
           </div>
 
-          <button
-            onClick={() => carouselRef.current?.next()}
-            aria-label="Próximo depoimento"
-            className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-all flex-shrink-0 z-20 absolute right-0"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-
         </div>
+      </section>
 
-      </div>
-    </section>
+      {/* =========================================
+          MODAL DE DEPOIMENTO
+      ========================================= */}
+      {selectedDepoimento && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity"
+          onClick={() => setSelectedDepoimento(null)} // Fecha ao clicar fora
+        >
+          <div 
+            className="bg-[#061129] border border-white/10 rounded-3xl p-8 md:p-10 max-w-2xl w-full relative shadow-2xl"
+            onClick={(e) => e.stopPropagation()} // Evita fechar ao clicar dentro do card
+          >
+            {/* Botão Fechar (X) */}
+            <button 
+              onClick={() => setSelectedDepoimento(null)} 
+              className="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors p-2 bg-white/5 rounded-full"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Estrelas */}
+            <div className="flex gap-1 mb-6">
+              {renderStars(selectedDepoimento.estrelas)}
+            </div>
+
+            {/* Texto Completo */}
+            <div className="flex gap-4 mb-10">
+              <span className="text-[#E6007E] text-4xl font-serif font-black leading-none mt-1">“</span>
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed font-medium">
+                {selectedDepoimento.texto}
+              </p>
+            </div>
+
+            {/* Perfil */}
+            <div className="flex items-center gap-4 pt-6 border-t border-white/10">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#008FD5] to-[#E6007E] flex items-center justify-center text-white font-bold text-xl flex-shrink-0 shadow-lg">
+                {selectedDepoimento.nome.charAt(0)}
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-white font-bold text-base tracking-tight">{selectedDepoimento.nome}</span>
+                <span className="text-gray-400 text-sm mb-1">{selectedDepoimento.cargo}</span>
+                <span className="text-[#008FD5] font-black text-[11px] tracking-widest uppercase flex items-center gap-1">
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                  {selectedDepoimento.empresa}
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </>
   );
 }
