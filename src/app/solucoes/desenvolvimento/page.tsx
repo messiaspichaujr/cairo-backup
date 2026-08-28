@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { SpecialProjects } from "@/components/sections/SpecialProjects";
+// IMPORT FALTANDO ADICIONADO AQUI:
+import { AnimatedSection } from "@/components/shared/AnimatedSection"; 
 
 export const metadata = {
   title: 'Desenvolvimento Web | Cairo TI',
@@ -8,7 +11,7 @@ export const metadata = {
 export default function DesenvolvimentoPage() {
   return (
     <main className="w-full min-h-screen flex flex-col">
-      
+
       {/* =========================================
           1. HERO & SOLUÇÕES (FUNDO CLARO)
       ========================================= */}
@@ -18,18 +21,18 @@ export default function DesenvolvimentoPage() {
         <div className="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-pink-100/50 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-[1300px] w-full mx-auto px-4 lg:px-8 relative z-10">
-          
+
           {/* Header */}
           <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
             <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <h1 className="text-[#0c1f44] text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] mb-6">
                 Desenvolvimento Web: A Vitrine Digital e o <span className="text-[#E6007E]">Motor de Vendas</span> da Sua Empresa
               </h1>
-              
+
               <p className="text-gray-600 text-base leading-relaxed mb-4">
                 No mercado atual, o site da sua empresa é muitas vezes o primeiro contato que um potencial cliente tem com a sua marca. Mais do que bonito, ele precisa ser rápido, confiável, fácil de navegar e, acima de tudo, gerar resultados para o seu negócio.
               </p>
-              
+
               <p className="text-gray-600 text-base leading-relaxed">
                 Na <span className="font-bold text-[#0c1f44]">Cairo Tecnologia e Inovação</span>, unimos design inteligente, alta performance e a robustez da nossa infraestrutura de TI para criar presenças digitais marcantes. Desenvolvemos projetos sob medida para posicionar sua marca no topo e transformar visitantes em clientes.
               </p>
@@ -38,9 +41,9 @@ export default function DesenvolvimentoPage() {
             <div className="w-full lg:w-1/2">
               <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
                 {/* Imagem de Desenvolvimento/Design UI */}
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
-                  alt="Desenvolvimento Web e UI Design" 
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+                  alt="Desenvolvimento Web e UI Design"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#E6007E]/20 to-transparent mix-blend-multiply pointer-events-none"></div>
@@ -53,7 +56,7 @@ export default function DesenvolvimentoPage() {
             <h2 className="text-[#0c1f44] text-3xl font-extrabold tracking-tight mb-8 text-center md:text-left">
               Soluções Web Desenvolvidas para o Seu Negócio
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Card 1: Portais */}
               <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all group">
@@ -92,7 +95,7 @@ export default function DesenvolvimentoPage() {
         <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
         <div className="max-w-[1200px] w-full mx-auto px-4 lg:px-8 relative z-10">
-          
+
           <div className="mb-12 text-center md:text-left">
             <h2 className="text-white text-3xl md:text-4xl font-extrabold tracking-tight mb-4">O Diferencial de Desenvolver com quem entende de TI</h2>
             <p className="text-gray-400 max-w-3xl leading-relaxed mx-auto md:mx-0">
@@ -101,7 +104,7 @@ export default function DesenvolvimentoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             {/* Card 1: Performance */}
             <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group hover:border-[#008FD5]/50 transition-colors">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#008FD5] opacity-0 group-hover:opacity-10 blur-[100px] transition-opacity duration-700"></div>
@@ -136,13 +139,17 @@ export default function DesenvolvimentoPage() {
         </div>
       </section>
 
-
+      {/* COMPONENTE DE PROJETOS ADICIONADO AQUI */}
+      <AnimatedSection delay={0.15}>
+        <SpecialProjects />
+      </AnimatedSection>
+      
       {/* =========================================
           3. CTA FINAL (FUNDO CLARO)
       ========================================= */}
       <section className="w-full bg-[#f8fafc] py-20 relative overflow-hidden">
         <div className="max-w-[1200px] w-full mx-auto px-4 lg:px-8 relative z-10">
-          
+
           <div className="w-full bg-white border border-gray-100 shadow-xl rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative overflow-hidden">
             {/* Detalhe de fundo do banner */}
             <div className="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-blue-50 to-transparent pointer-events-none"></div>
@@ -159,7 +166,7 @@ export default function DesenvolvimentoPage() {
                 Entre em contato com a nossa equipe e vamos conversar sobre o seu próximo projeto web.
               </p>
             </div>
-            
+
             <Link href="/#contato" className="relative z-10 bg-gradient-to-r from-[#E6007E] to-[#c5006c] hover:opacity-90 text-white font-extrabold py-4 px-8 rounded-full shadow-lg transition-opacity whitespace-nowrap text-sm">
               Solicitar proposta de desenvolvimento web
             </Link>

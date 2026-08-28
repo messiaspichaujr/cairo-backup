@@ -16,10 +16,10 @@ import LogoGrupoRainbow14 from '@/assets/clients/gruporainbow14.png';
 import LogoIdhera13 from '@/assets/clients/idhera13.png';
 import LogoSolvoBr12 from '@/assets/clients/solvobr12.png';
 import LogoAlianza10 from '@/assets/clients/alianza10.jpg';
-import LogoOab9 from '@/assets/clients/oab9.png';
+import LogoOab9 from '@/assets-novo/PNG/oab-logo.jpeg';
 import LogoContabil6 from '@/assets/clients/contabil6.png';
 import LogoUsimega5 from '@/assets/clients/usimega5.jpg';
-import LogoBtomec4 from '@/assets/clients/btomec4.png';
+import LogoBtomec4 from '@/assets-novo/PNG/btomec_logo.jpeg';
 import LogoTecnoiso3 from '@/assets/clients/tecnoiso3.webp';
 import LogoIscbras1 from '@/assets/clients/iscbras1.png';
 
