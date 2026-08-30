@@ -9,8 +9,8 @@ export async function POST(request: Request) {
 
     const data = await resend.emails.send({
       from: 'Site Cairo TI <onboarding@resend.dev>', 
-      to: ['messiaspichau15@gmail.com'], 
-      reply_to: email, 
+      to: ['contato@cairotecnologia.com.br'], 
+      replyTo: email,
       subject: `Novo Contato do Site - ${nome}`,
       html: `
         <div style="font-family: sans-serif; color: #0c1f44; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 10px; padding: 20px;">
