@@ -8,46 +8,72 @@ import type { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
 
+// Mantém o fundo original
 import BgProjetos from '@/assets/images/background-projetos.png';
 
-// Importação das imagens reais dos sites
-import SiteAlianza from '@/assets/siteshero/alianzaengenharia.png';
-import SiteArtbor from '@/assets/siteshero/artbor.png';
-import SiteBtomec from '@/assets/siteshero/btomec.png';
-import SiteCoelhoNeto from '@/assets/siteshero/drcoelhoneto.png';
-import SiteHdc from '@/assets/siteshero/hdcequipamentos.png';
-import SiteHorizonte from '@/assets/siteshero/horizoncont.png';
-import SiteIcbras from '@/assets/siteshero/icbras.png';
-import SiteIdhera from '@/assets/siteshero/idhera.png';
-import SiteInoxsul from '@/assets/siteshero/inoxsul.png';
-import SiteOab from '@/assets/siteshero/oabjoinville.png';
-import SiteRainbow from '@/assets/siteshero/rainbow.png';
-import SiteRefritec from '@/assets/siteshero/refritec.png';
-import SiteSolvo from '@/assets/siteshero/solvo.png';
-import SiteTecnoiso from '@/assets/siteshero/tecnoiso.png';
-import SiteUsimega from '@/assets/siteshero/usimega.png';
-import SiteWalbert from '@/assets/siteshero/walbertgroup.png';
+// Importação apenas das NOVAS imagens da pasta siteshero
+import SiteDualConcept from '@/assets/siteshero/dualconcept.png';
+import SiteGlavo from '@/assets/siteshero/glavoempresarial.png';
+import SiteHdcMaquinas from '@/assets/siteshero/hdcmaquinas.png';
+import SiteLojaTecnoiso from '@/assets/siteshero/lojatecnoiso.png';
+import SiteSolvoBR from '@/assets/siteshero/solvobr.png';
+import SiteSubmarino from '@/assets/siteshero/submarino.png';
+import SiteWolfInsumos from '@/assets/siteshero/wolfinsumos.png';
 
 export function SpecialProjects() {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
+  // Array atualizado apenas com os novos projetos
   const projetos = [
-    { cliente: 'Tecnoiso', segmento: 'Indústria', desc: 'Site institucional com apresentação de soluções industriais, cases de sucesso e área do cliente.', image: SiteTecnoiso, url: 'https://tecnoiso.com' },
-    { cliente: 'IdHera', segmento: 'Saúde', desc: 'Plataforma institucional para apresentação de serviços médicos e informações de saúde.', image: SiteIdhera, url: 'https://www.idhera.com.br/' },
-    { cliente: 'OAB Joinville', segmento: 'Institucional', desc: 'Portal oficial com serviços para advogados, notícias e informações institucionais atualizadas.', image: SiteOab, url: 'https://www.oabjoinville.org.br/' },
-    { cliente: 'J. N. Coelho Neto', segmento: 'Advocacia', desc: 'Site corporativo apresentando áreas de atuação, equipe de especialistas e artigos jurídicos.', image: SiteCoelhoNeto, url: 'https://coelhoneto.adv.br/' },
-    { cliente: 'Alianza Engenharia', segmento: 'Engenharia', desc: 'Portfólio online detalhado com projetos de engenharia, serviços e histórico de sucesso.', image: SiteAlianza, url: 'https://alianzaengenharia.com.br/' },
-    { cliente: 'Artbor', segmento: 'Indústria', desc: 'Catálogo virtual de produtos, destacando qualidade, certificações e aplicações técnicas.', image: SiteArtbor, url: 'https://www.artbor.com.br/' },
-    { cliente: 'Btomec', segmento: 'Usinagem', desc: 'Site institucional focado em soluções de ferramentaria, tecnologia e precisão industrial.', image: SiteBtomec, url: 'https://btomec.com.br' },
-    { cliente: 'HDC Equipamentos', segmento: 'Indústria', desc: 'Plataforma para apresentação de equipamentos, manuais técnicos e solicitação de orçamentos.', image: SiteHdc, url: 'https://hdcequipamentos.com.br/' },
-    { cliente: 'Horizonte Contabilidade', segmento: 'Contabilidade', desc: 'Portal de serviços contábeis com área restrita para clientes e envio de documentos seguros.', image: SiteHorizonte, url: 'https://horizontecont.com.br/' },
-    { cliente: 'Icbras', segmento: 'Indústria', desc: 'Apresentação corporativa de soluções para infraestrutura, certificações e catálogo técnico.', image: SiteIcbras, url: 'https://www.icbras.com.br/' },
-    { cliente: 'Inoxsul', segmento: 'Indústria', desc: 'Catálogo completo de produtos em aço inox, focando em aplicações industriais e corporativas.', image: SiteInoxsul, url: 'https://inoxsul.com' },
-    { cliente: 'Grupo Rainbow', segmento: 'Serviços', desc: 'Site corporativo unificado apresentando todas as verticais de negócio e estrutura do grupo.', image: SiteRainbow, url: 'https://www.gruporainbow.com.br/' },
-    { cliente: 'Refritec', segmento: 'Climatização', desc: 'Apresentação de projetos de engenharia térmica, serviços de manutenção e portfólio de obras.', image: SiteRefritec, url: 'https://refritecengenharia.com.br/' },
-    { cliente: 'SolvoBR', segmento: 'Tecnologia', desc: 'Plataforma moderna destacando soluções tecnológicas, integrações e serviços especializados.', image: SiteSolvo, url: 'https://solvobr.com' },
-    { cliente: 'Usimega', segmento: 'Metalúrgica', desc: 'Site focado em infraestrutura produtiva, maquinário tecnológico e soluções sob medida.', image: SiteUsimega, url: 'https://usimega.com.br' },
-    { cliente: 'Walbert Group', segmento: 'Corporativo', desc: 'Portal global apresentando as soluções da empresa, governança e alcance de mercado.', image: SiteWalbert, url: 'https://walbertgroup.com' },
+    { 
+      cliente: 'Dual Concept', 
+      segmento: 'Serviços', 
+      desc: 'Site institucional focado na apresentação de soluções sob medida e portfólio completo da marca.', 
+      image: SiteDualConcept, 
+      url: 'https://dualconcept.com.br/' 
+    },
+    { 
+      cliente: 'Glavo Empresarial', 
+      segmento: 'Corporativo', 
+      desc: 'Plataforma corporativa voltada para a apresentação de serviços empresariais e consultoria especializada.', 
+      image: SiteGlavo, 
+      url: 'https://glavo.com.br/' 
+    },
+    { 
+      cliente: 'HDC Máquinas', 
+      segmento: 'Indústria', 
+      desc: 'Catálogo virtual para apresentação de maquinários industriais, manuais técnicos e solicitação de orçamentos.', 
+      image: SiteHdcMaquinas, 
+      url: 'https://hdcequipamentos.com.br/' 
+    },
+    { 
+      cliente: 'Loja Tecnoiso', 
+      segmento: 'E-commerce', 
+      desc: 'Loja virtual completa (e-commerce) focada na venda segura e ágil de soluções e equipamentos.', 
+      image: SiteLojaTecnoiso, 
+      url: 'https://lojatecnoiso.com.br/' 
+    },
+    { 
+      cliente: 'SolvoBR', 
+      segmento: 'Tecnologia', 
+      desc: 'Plataforma moderna destacando soluções tecnológicas, integrações e serviços especializados.', 
+      image: SiteSolvoBR, 
+      url: 'https://solvobr.com' 
+    },
+    { 
+      cliente: 'Submarine', 
+      segmento: 'Comércio', 
+      desc: 'a Sub Marine realiza serviços na área marítima e subaquática com segurança e qualidade', 
+      image: SiteSubmarino, 
+      url: 'https://submarine.srv.br/' 
+    },
+    { 
+      cliente: 'Wolf Insumos', 
+      segmento: 'Indústria', 
+      desc: 'Portal corporativo para fornecimento de insumos industriais, com detalhamento técnico completo de produtos.', 
+      image: SiteWolfInsumos, 
+      url: 'https://wolfinsumos.com.br/' 
+    }
   ];
 
   return (
@@ -101,15 +127,12 @@ export function SpecialProjects() {
               breakpoints={{
                 768: { slidesPerView: 2, spaceBetween: 20 },
                 1024: { slidesPerView: 3, spaceBetween: 30 },
-                // Mudei aqui de 4 para 3 colunas em telas muito grandes
                 1280: { slidesPerView: 3, spaceBetween: 30 },
               }}
               className="overflow-visible px-2"
             >
               {projetos.map((item, index) => (
-                // AQUI: A classe !h-auto força todos os slides do Swiper a terem a altura do maior card
                 <SwiperSlide key={index} className="flex justify-center pb-6 !h-auto">
-                  {/* O card recebe h-full para preencher o espaço inteiro do slide */}
                   <a 
                     href={item.url}
                     target="_blank"
@@ -128,7 +151,7 @@ export function SpecialProjects() {
                       />
                     </div>
 
-                    {/* Informações do Projeto - flex-1 empurra o conteúdo adequadamente */}
+                    {/* Informações do Projeto */}
                     <div className="p-6 md:p-8 flex flex-col flex-1">
                       
                       <div className="flex justify-between items-start mb-4">

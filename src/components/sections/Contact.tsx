@@ -6,30 +6,80 @@ import BgContato from '@/assets/images/contact-bg.png';
 
 export function Contact() {
 
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [servico, setServico] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não é número
+    let value = e.target.value.replace(/\D/g, ""); 
 
     if (value.length > 11) {
-      value = value.slice(0, 11); // Limita a 11 caracteres numéricos
+      value = value.slice(0, 11); 
     }
 
     if (value.length > 10) {
-      // Celular (11 dígitos): (47) 99999-9999
+    
       value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
     } else if (value.length > 6) {
-      // Fixo (10 dígitos): (47) 3030-5892
+   
       value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
     } else if (value.length > 2) {
-      // Enquanto digita DDD e primeiros números: (47) 9961
+    
       value = value.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
     } else if (value.length > 0) {
-      // Começando a digitar o DDD: (47
+     
       value = value.replace(/^(\d*)/, "($1");
     }
 
     setTelefone(value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: `${nome} ${sobrenome}`,
+          email,
+          telefone,
+          servico,
+          mensagem,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Limpa os campos após o envio
+        setNome('');
+        setSobrenome('');
+        setEmail('');
+        setTelefone('');
+        setServico('');
+        setMensagem('');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      // Remove a mensagem de sucesso/erro após 5 segundos
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -38,15 +88,12 @@ export function Contact() {
       className="relative w-full py-16 lg:py-20 bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: `url(${BgContato.src})` }}
     >
-      {/* Overlay escuro removido a pedido! A imagem de fundo aparece 100% original. */}
-
       <div className="max-w-[1150px] mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center lg:items-start">
           
           {/* --- LADO ESQUERDO: Textos e Informações --- */}
           <div className="w-full lg:w-5/12 flex flex-col">
             
-            {/* Tag / Título Menor */}
             <div className="flex items-center gap-3 mb-3">
               <span className="text-[#E6007E] text-[10px] md:text-xs font-black tracking-widest uppercase">
                 Contato
@@ -55,13 +102,11 @@ export function Contact() {
               <div className="w-8 h-[2px] bg-[#E6007E]"></div>
             </div>
 
-            {/* Título Principal (Reduzido para manter a harmonia) */}
             <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
               Vamos conversar <br />
               sobre o <span className="text-[#E6007E]">seu projeto?</span>
             </h2>
 
-            {/* Elemento Decorativo */}
             <div className="flex items-center gap-2 mb-6">
               <div className="w-8 h-[2px] bg-[#008FD5]"></div>
               <div className="w-5 h-5 rounded-full border-2 border-[#008FD5] flex flex-col items-center justify-center text-[#E6007E]">
@@ -79,9 +124,7 @@ export function Contact() {
               Preencha o formulário ao lado e nossa equipe entrará em contato com você o mais rápido possível.
             </p>
 
-            {/* Lista de Contatos */}
             <div className="flex flex-col gap-5 mb-8">
-              
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#E6007E]/30 bg-[#E6007E]/10 flex items-center justify-center text-[#E6007E] flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
@@ -117,10 +160,8 @@ export function Contact() {
                   <span className="text-white font-bold text-base">Segunda a Sexta, das 08h às 18h</span>
                 </div>
               </div>
-
             </div>
 
-            {/* Box WhatsApp */}
             <a 
               href="https://wa.me/5547999999999" 
               target="_blank" 
@@ -129,7 +170,6 @@ export function Contact() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full border border-[#E6007E]/30 bg-[#E6007E]/10 flex items-center justify-center text-[#E6007E] flex-shrink-0">
-                  {/* Ícone de Headset (WhatsApp) */}
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
                   </svg>
@@ -152,46 +192,47 @@ export function Contact() {
           <div className="w-full lg:w-7/12 mt-4 lg:mt-0">
             <div className="bg-[#061129]/70 backdrop-blur-xl border border-white/10 rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden">
               
-              {/* Brilho sutil no topo do card */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E6007E] to-transparent opacity-50"></div>
 
-              <form className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Nome */}
                   <div className="flex flex-col">
                     <label className="text-white font-bold text-xs mb-1.5">Nome <span className="text-[#E6007E]">*</span></label>
                     <input 
                       type="text" 
                       placeholder="Seu nome completo" 
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
                       className="bg-[#0a1635]/80 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#E6007E] transition-colors"
                       required
                     />
                   </div>
-                  {/* Sobrenome */}
                   <div className="flex flex-col">
                     <label className="text-white font-bold text-xs mb-1.5">Sobrenome <span className="text-[#E6007E]">*</span></label>
                     <input 
                       type="text" 
                       placeholder="Seu sobrenome" 
+                      value={sobrenome}
+                      onChange={(e) => setSobrenome(e.target.value)}
                       className="bg-[#0a1635]/80 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#E6007E] transition-colors"
                       required
                     />
                   </div>
                 </div>
 
-                {/* E-mail */}
                 <div className="flex flex-col">
                   <label className="text-white font-bold text-xs mb-1.5">E-mail <span className="text-[#E6007E]">*</span></label>
                   <input 
                     type="email" 
                     placeholder="seu@email.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="bg-[#0a1635]/80 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#E6007E] transition-colors"
                     required
                   />
                 </div>
 
-                {/* Telefone */}
                 <div className="flex flex-col">
                   <label className="text-white font-bold text-xs mb-1.5">Telefone <span className="text-[#E6007E]">*</span></label>
                   <input 
@@ -205,20 +246,20 @@ export function Contact() {
                   />
                 </div>
 
-                {/* Select Serviço */}
                 <div className="flex flex-col">
                   <label className="text-white font-bold text-xs mb-1.5">Sobre qual serviço gostaria de falar? <span className="text-[#E6007E]">*</span></label>
                   <div className="relative">
                     <select 
+                      value={servico}
+                      onChange={(e) => setServico(e.target.value)}
                       className="w-full bg-[#0a1635]/80 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-gray-400 appearance-none focus:outline-none focus:border-[#E6007E] transition-colors cursor-pointer"
                       required
-                      defaultValue=""
                     >
                       <option value="" disabled hidden>Selecione um serviço</option>
-                      <option value="consultoria" className="text-gray-800">Consultoria em TI</option>
-                      <option value="infraestrutura" className="text-gray-800">Infraestrutura & Cloud</option>
-                      <option value="cyberseguranca" className="text-gray-800">Cybersegurança</option>
-                      <option value="desenvolvimento" className="text-gray-800">Desenvolvimento Web</option>
+                      <option value="Consultoria em TI" className="text-gray-800">Consultoria em TI</option>
+                      <option value="Infraestrutura & Cloud" className="text-gray-800">Infraestrutura & Cloud</option>
+                      <option value="Cybersegurança" className="text-gray-800">Cybersegurança</option>
+                      <option value="Desenvolvimento Web" className="text-gray-800">Desenvolvimento Web</option>
                     </select>
                     <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
@@ -228,28 +269,37 @@ export function Contact() {
                   </div>
                 </div>
 
-                {/* Textarea */}
                 <div className="flex flex-col">
                   <label className="text-white font-bold text-xs mb-1.5">Como podemos ajudar?</label>
                   <textarea 
                     placeholder="Conte um pouco sobre seu projeto ou desafio..." 
                     rows={3}
+                    value={mensagem}
+                    onChange={(e) => setMensagem(e.target.value)}
                     className="bg-[#0a1635]/80 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#E6007E] transition-colors resize-none"
                   ></textarea>
                 </div>
 
-                {/* Botão Gradiente */}
                 <button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#E6007E] to-[#008FD5] text-white font-bold text-sm py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity mt-1 shadow-lg"
+                  disabled={isSubmitting}
+                  className={`w-full bg-gradient-to-r from-[#E6007E] to-[#008FD5] text-white font-bold text-sm py-3 rounded-lg flex items-center justify-center gap-2 transition-opacity mt-1 shadow-lg ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:opacity-90'}`}
                 >
-                  Enviar mensagem
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+                  {!isSubmitting && (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  )}
                 </button>
 
-                {/* Footer Seguro */}
+                {submitStatus === 'success' && (
+                  <p className="text-green-400 text-sm font-medium text-center mt-2">Mensagem enviada com sucesso!</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-400 text-sm font-medium text-center mt-2">Erro ao enviar. Tente novamente mais tarde.</p>
+                )}
+
                 <div className="flex items-center justify-center gap-2 mt-2 text-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
