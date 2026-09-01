@@ -21,7 +21,7 @@ export function FAQ() {
     },
     {
       pergunta: '3. Onde a empresa presta atendimento físico e remoto?',
-      resposta: 'Nosso atendimento presencial (físico) abrange a cidade de Joinville e toda a região. Já o nosso suporte remoto não tem fronteiras: atendemos empresas em qualquer lugar do mundo. Atualmente, contamos com clientes em países como Estados Unidos, México e Paraguai.'
+      resposta: 'Nosso atendimento presencial é realizado diretamente no endereço do cliente em Joinville e região. Já o suporte remoto é feito via internet, por meio de ferramentas de acesso seguro, sem fronteiras geográficas: atendemos empresas em qualquer lugar do mundo, com clientes ativos em países como Estados Unidos, México e Paraguai.'
     },
     {
       pergunta: '4. Como funciona o suporte remoto? Ele é seguro?',
