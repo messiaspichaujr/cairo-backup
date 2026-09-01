@@ -9,7 +9,7 @@ import PerfilDono from '@/assets/images/sobre-cairo-perfil.png';
 
 // Imports Antigos
 import CertGoogle from '@/assets/certificados/certificado-google.png';
-import CertUfs from '@/assets/certificados/certificado-microsoft.jpeg'; 
+import CertUfs from '@/assets/certificados/certificado-microsoft.jpeg';
 import CertMicrosoftReal from '@/assets/certificados/certified-microsoft.jpeg';
 import CertCybersecurity from '@/assets/certificados/URSCA.jpeg';
 import CertWireless from '@/assets/certificados/UWA.jpeg';
@@ -60,8 +60,8 @@ export function About() {
   ];
 
   const certificacoes = [
-    { 
-      nome: 'Google', 
+    {
+      nome: 'Google',
       subtitulo: 'Suporte em TI',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'SEGURANÇA',
@@ -70,8 +70,8 @@ export function About() {
       aplicacao: 'Garante suporte de alto nível para resolver incidentes com precisão e segurança no dia a dia.',
       style: { bottomLine: 'bg-[#008FD5]', iconType: 'shield-blue' }
     },
-    { 
-      nome: 'Microsoft', 
+    {
+      nome: 'Microsoft',
       subtitulo: 'Partner',
       tag: 'PARCERIA OFICIAL',
       categoria: 'INFRAESTRUTURA',
@@ -80,8 +80,8 @@ export function About() {
       aplicacao: 'Proporciona acesso direto a recursos avançados, suporte especializado e diretrizes oficiais.',
       style: { bottomLine: 'bg-[#008FD5]', iconType: 'ribbon-blue' }
     },
-    { 
-      nome: 'UFSP', 
+    {
+      nome: 'UFSP',
       subtitulo: 'Full Stack',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'DESENVOLVIMENTO',
@@ -90,8 +90,8 @@ export function About() {
       aplicacao: 'Permite o monitoramento em tempo real, gestão remota e rápida resolução de gargalos na rede.',
       style: { bottomLine: 'bg-[#E6007E]', iconType: 'shield-pink' }
     },
-    { 
-      nome: 'URSCA', 
+    {
+      nome: 'URSCA',
       subtitulo: 'Routing, Switching & Cybersecurity',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'REDES E CYBERSECURITY',
@@ -100,8 +100,8 @@ export function About() {
       aplicacao: 'Garante projetos de rede mais seguros, estáveis e preparados para ambientes de alta performance.',
       style: { bottomLine: 'bg-[#E6007E]', iconType: 'shield-pink' }
     },
-    { 
-      nome: 'UWA', 
+    {
+      nome: 'UWA',
       subtitulo: 'Wireless Admin',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'REDES SEM FIO',
@@ -110,8 +110,8 @@ export function About() {
       aplicacao: 'Assegura conectividade estável, segura e escalável para usuários e dispositivos em qualquer lugar.',
       style: { bottomLine: 'bg-[#008FD5]', iconType: 'ribbon-blue' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'Backup',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'BACKUP E RECUPERAÇÃO',
@@ -120,8 +120,8 @@ export function About() {
       aplicacao: 'Garante a integridade e disponibilidade dos dados através de rotinas de cópias de segurança de alta confiabilidade.',
       style: { bottomLine: 'bg-[#E6007E]', iconType: 'shield-pink' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'Cyber Protect Cloud',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'PROTEÇÃO CLOUD',
@@ -130,8 +130,8 @@ export function About() {
       aplicacao: 'Centraliza a gestão de segurança, backup e recuperação de desastres em um único painel ágil e seguro.',
       style: { bottomLine: 'bg-[#008FD5]', iconType: 'ribbon-blue' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'M365',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'MICROSOFT 365',
@@ -140,8 +140,8 @@ export function About() {
       aplicacao: 'Protege e-mails, arquivos e dados colaborativos do Office 365 contra perdas acidentais, exclusões ou ataques.',
       style: { bottomLine: 'bg-[#E6007E]', iconType: 'shield-pink' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'RMM & PSA',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'GESTÃO DE TI',
@@ -150,8 +150,8 @@ export function About() {
       aplicacao: 'Permite gerenciar pró-ativamente a infraestrutura do cliente, antecipando falhas e automatizando a resposta a incidentes.',
       style: { bottomLine: 'bg-[#008FD5]', iconType: 'shield-blue' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'EDR',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'SEGURANÇA DE ENDPOINT',
@@ -160,8 +160,8 @@ export function About() {
       aplicacao: 'Identifica, bloqueia e investiga ameaças avançadas diretamente nos dispositivos dos usuários antes que afetem a rede.',
       style: { bottomLine: 'bg-[#E6007E]', iconType: 'shield-pink' }
     },
-    { 
-      nome: 'Acronis Academy', 
+    {
+      nome: 'Acronis Academy',
       subtitulo: 'Ultimate 365 Solution',
       tag: 'CERTIFICAÇÃO OFICIAL',
       categoria: 'SOLUÇÃO COMPLETA',
@@ -210,9 +210,9 @@ export function About() {
     <>
       <section id="sobre" className="w-full bg-[#f8fafc] pt-24 pb-20 relative overflow-hidden">
         <div className="absolute top-12 left-8 w-32 h-32 opacity-20 bg-[radial-gradient(#008fd5_1.5px,transparent_1.5px)] [background-size:12px_12px] hidden lg:block"></div>
-        
+
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          
+
           {/* SOBRE A CAIRO */}
           <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24 mb-24">
             <div className="w-full lg:w-5/12 flex justify-center relative">
@@ -241,7 +241,7 @@ export function About() {
               </h2>
 
               <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mb-10 font-medium">
-                Unindo 20 anos de experiência de sua liderança a 8 anos de história no mercado, ajudamos empresas de diferentes segmentos a crescerem através de soluções tecnológicas inteligentes, seguras e escaláveis.
+                Unindo 20 anos de experiência de seu fundador aos 8 anos de história no mercado, a empresa ajuda negócios de diferentes segmentos a crescerem através de soluções tecnológicas inteligentes, seguras e escaláveis.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full mb-10">
@@ -263,14 +263,14 @@ export function About() {
 
           {/* CERTIFICAÇÕES */}
           <div className="w-full relative z-10 pt-16">
-            
+
             <div className="flex flex-col items-center justify-center text-center mb-14">
-               <h3 className="text-[#0c1f44] text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-                  Certificações & <span className="text-[#E6007E]">Parcerias</span>
-               </h3>
-               <p className="text-gray-500 text-base max-w-xl mx-auto font-medium">
-                  Acreditamos que conhecimento e parceria são a base para entregar soluções mais seguras e inovadoras.
-               </p>
+              <h3 className="text-[#0c1f44] text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                Certificações & <span className="text-[#E6007E]">Parcerias</span>
+              </h3>
+              <p className="text-gray-500 text-base max-w-xl mx-auto font-medium">
+                Acreditamos que conhecimento e parceria são a base para entregar soluções mais seguras e inovadoras.
+              </p>
             </div>
 
             {/* Divisor */}
@@ -283,12 +283,12 @@ export function About() {
               </div>
               <div className="flex-1 h-px bg-gray-200"></div>
             </div>
-            
+
             {/* Grid com animação suave */}
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1100px] mx-auto mb-10">
               <AnimatePresence>
                 {visibleCerts.map((cert, idx) => (
-                  <motion.div 
+                  <motion.div
                     layout
                     key={cert.subtitulo + idx}
                     initial={{ opacity: 0, y: 20 }}
@@ -300,17 +300,17 @@ export function About() {
                     className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow p-6 flex flex-col relative overflow-hidden group cursor-pointer h-full min-h-[140px]"
                   >
                     <div className={`absolute bottom-0 left-0 w-full h-1 ${cert.style.bottomLine} transition-all duration-300 group-hover:h-1.5`}></div>
-                    
+
                     <div className="flex items-start justify-between w-full">
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 relative flex-shrink-0">
                           <Image src={cert.image} alt={cert.nome} fill className="object-contain" />
                         </div>
-                        
+
                         <div className="flex flex-col">
                           <h4 className="text-[#0c1f44] font-extrabold text-lg leading-tight mb-0.5">{cert.nome}</h4>
                           <span className="text-[#0c1f44] font-medium text-sm mb-2">{cert.subtitulo}</span>
-                          
+
                           <div className="flex items-center gap-1 text-[#008FD5]">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-1.64.453l1.321 5.372a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.321-5.372a.563.563 0 00-.164-.453L3.1 8.385a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
                             <span className="text-[9px] font-black uppercase tracking-wider">{cert.tag}</span>
@@ -324,7 +324,7 @@ export function About() {
                     </div>
 
                     <div className="mt-auto pt-6 text-left">
-                       <span className="text-gray-400 text-[10px] font-black uppercase tracking-widest">{cert.categoria}</span>
+                      <span className="text-gray-400 text-[10px] font-black uppercase tracking-widest">{cert.categoria}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -334,7 +334,7 @@ export function About() {
             {/* Botão Ver Todas */}
             {!showAllCerts && (
               <div className="flex justify-center mt-8">
-                <button 
+                <button
                   onClick={() => setShowAllCerts(true)}
                   className="flex items-center gap-2 px-8 py-3 rounded-full border border-gray-300 text-[#0c1f44] font-bold text-sm hover:border-[#008FD5] hover:text-[#008FD5] transition-colors cursor-pointer"
                 >
@@ -354,7 +354,7 @@ export function About() {
       {/* MODAL COM ANIMAÇÃO SUAVE */}
       <AnimatePresence>
         {selectedCert && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -362,7 +362,7 @@ export function About() {
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#020713]/80 backdrop-blur-sm"
             onClick={() => setSelectedCert(null)}
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -370,8 +370,8 @@ export function About() {
               className="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl border border-gray-100"
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                onClick={() => setSelectedCert(null)} 
+              <button
+                onClick={() => setSelectedCert(null)}
                 className="absolute top-4 right-4 text-gray-400 hover:text-[#E6007E] transition-colors p-2"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
@@ -393,16 +393,16 @@ export function About() {
               <div className="flex flex-col gap-6">
                 <div className="bg-blue-50/50 rounded-xl p-5 border border-blue-100/30">
                   <div className="flex items-center gap-2 mb-2 text-[#0c1f44]">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" /></svg>
-                     <span className="text-[11px] font-black uppercase tracking-wider">O que é</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" /></svg>
+                    <span className="text-[11px] font-black uppercase tracking-wider">O que é</span>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">{selectedCert.oQueE}</p>
                 </div>
-                
+
                 <div className="bg-pink-50/50 rounded-xl p-5 border border-pink-100/30">
                   <div className="flex items-center gap-2 mb-2 text-[#E6007E]">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                     <span className="text-[11px] font-black uppercase tracking-wider">Aplicação Prática</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span className="text-[11px] font-black uppercase tracking-wider">Aplicação Prática</span>
                   </div>
                   <p className="text-gray-700 text-sm leading-relaxed font-medium">{selectedCert.aplicacao}</p>
                 </div>

@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer"; // <-- Adicione a importação do Footer aqui
+import { Footer } from "@/components/layout/Footer";
+import { CookieBanner } from '@/components/sections/CookieBanner';
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +30,9 @@ export default function RootLayout({
 
         {/* Footer Global - Agora vai aparecer em todas as páginas! */}
         <Footer /> 
+
+        {/* Banner de Cookies */}
+        <CookieBanner />
 
         {/* Script do TiFlux (Chat Minimizado) */}
         <Script id="tiflux-chat-widget" strategy="afterInteractive">
